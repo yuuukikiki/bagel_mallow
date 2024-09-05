@@ -34,7 +34,7 @@
 
 
 
-## products テーブル
+## item テーブル
 
 | Column           | Type       | Options     |
 | -----------------| ---------- | ----------- |
@@ -76,4 +76,4 @@
 ### Association
 
 - belongs_to :order
-- belongs_to :product
+- belongs_to :item
