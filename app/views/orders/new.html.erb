@@ -1,40 +1,62 @@
-<!-- app/views/orders/new.html.erb -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>注文 - Bagel Mallow</title>
-  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 </head>
 <body>
   <header>
-    <h1>Order - Bagel Mallow</h1>
+    <h1><a href="/">Bagel Mallow</a></h1>
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/orders">Menu</a></li>
-        <li><a href="/orders/new">Order</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/">トップ</a></li>
+        <li><a href="/orders">メニュー</a></li>
+        <li><a href="/orders/new">注文</a></li>
+        <li><a href="/contact">お問い合わせ</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <h2>注文フォーム</h2>
-    <form action="/orders" method="post">
-      <!-- 注文フォームの内容 -->
-      <label for="item">Item:</label>
-      <select name="item" id="item">
-        <option value="bagel1">Classic Bagel</option>
-        <option value="bagel2">Everything Bagel</option>
-        <!-- Add more items as needed -->
-      </select>
+    <%= form_with model: @order, url: orders_path, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :item_id, '商品を選択:' %>
+        <%= f.collection_select :item_id, Item.all, :id, :name, prompt: '商品を選んでください' %>
+      </div>
 
-      <label for="quantity">Quantity:</label>
-      <input type="number" name="quantity" id="quantity" min="1" required>
+      <div class="form-group">
+        <%= f.label :quantity, '数量:' %>
+        <%= f.number_field :quantity, min: 1, required: true %>
+      </div>
 
-      <button type="submit">Order Now</button>
-    </form>
+      <div class="form-group">
+        <%= f.label :name, 'お名前:' %>
+        <%= f.text_field :name, required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, 'メールアドレス:' %>
+        <%= f.email_field :email, required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone_number, '電話番号:' %>
+        <%= f.text_field :phone_number, required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :shipping_address, '配送先住所:' %>
+        <%= f.text_area :shipping_address, rows: 4, required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit '注文する', class: 'submit-btn' %>
+      </div>
+    <% end %>
   </main>
 
   <footer>
