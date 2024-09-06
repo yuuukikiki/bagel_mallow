@@ -1,2 +1,48 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<!-- app/views/items/index.html.erb -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>メニュー - Bagel Mallow</title>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
+<body>
+  <header>
+    <h1>Bagel Mallow - メニュー</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/items">Menu</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Our Bagels</h2>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <img src="<%= asset_path('bagel1.jpg') %>" alt="Classic Bagel">
+        <div class="item-details">
+          <h3>Classic Bagel</h3>
+          <p>A traditional bagel with a golden crust and chewy interior.</p>
+          <span class="price">$2.50</span>
+        </div>
+      </li>
+      <li class="menu-item">
+        <img src="<%= asset_path('bagel2.jpg') %>" alt="Everything Bagel">
+        <div class="item-details">
+          <h3>Everything Bagel</h3>
+          <p>Sprinkled with sesame, poppy seeds, and more.</p>
+          <span class="price">$2.75</span>
+        </div>
+      </li>
+      <!-- Add more items as needed -->
+    </ul>
+  </main>
+
+  <footer>
+    <p>©2024 Bagel Mallow. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

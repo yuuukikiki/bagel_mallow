@@ -19,18 +19,18 @@
                 </a>
             </div>
             <nav>
-                <ul class="main-nav">
-                  <li><a href="/">Home</a></li>
-                  <% if user_signed_in? %>
-                    <li><%= link_to current_user.nickname, root_path, class: "user-nickname" %></li>
-                    <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %></li>
-                  <% else %>
-                    <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-                    <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-                  <% end %>
-                  <li><a href="http://nichinichisha.shop-pro.jp/" target="_blank">Menu</a></li>
-                  <li><a href="/free/shopinfo">Shop Info</a></li>
-                  <li><a href="/contact">Contact</a></li>
+               <ul class="main-nav">
+                    <li><a href="/">トップ</a></li>
+                    <li><a href="<%= orders_path %>">メニュー</a></li>                    
+                    <% if user_signed_in? %>
+                        <li><%= link_to current_user.name, root_path, class: "user-name" %></li>
+                        <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %></li>
+                    <% else %>
+                        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+                        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+                    <% end %>
+                    
+                    <li><a href="/contact">お問い合わせ</a></li>
                 </ul>
             </nav>
         </div>
