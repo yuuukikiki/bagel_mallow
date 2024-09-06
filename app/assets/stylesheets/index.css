@@ -112,17 +112,16 @@ nav {
 }
 
 /* ユーザーリンク */
-.user-nickname {
-  font-weight: bold;
+.user-name {
   color: #007bff;
-}
-
-.logout {
-  color: #ff4d4d; /* ログアウトリンクの色 */
 }
 
 .login, .sign-up {
   color: #007bff;
+}
+
+.logout {
+  color: #ff0000;
 }
 
 .login:hover, .sign-up:hover {

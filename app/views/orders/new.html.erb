@@ -1,0 +1,44 @@
+<!-- app/views/orders/new.html.erb -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>注文 - Bagel Mallow</title>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
+<body>
+  <header>
+    <h1>Order - Bagel Mallow</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/orders">Menu</a></li>
+        <li><a href="/orders/new">Order</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>注文フォーム</h2>
+    <form action="/orders" method="post">
+      <!-- 注文フォームの内容 -->
+      <label for="item">Item:</label>
+      <select name="item" id="item">
+        <option value="bagel1">Classic Bagel</option>
+        <option value="bagel2">Everything Bagel</option>
+        <!-- Add more items as needed -->
+      </select>
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" name="quantity" id="quantity" min="1" required>
+
+      <button type="submit">Order Now</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>©2024 Bagel Mallow. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
