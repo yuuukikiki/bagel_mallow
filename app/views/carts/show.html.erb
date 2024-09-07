@@ -1,0 +1,5 @@
+<h1>Your Cart</h1>
+<table id="cart">
+  <%= render partial: 'cart_items', locals: { cart_items: @cart.cart_items } %>
+</table>
+<%= link_to 'Continue Shopping', root_path %>
