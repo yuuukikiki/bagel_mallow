@@ -12,3 +12,29 @@ ja:
       postal_code_invalid: "は無効です。ハイフン(-)を含めてください"
       not_saved: "保存できませんでした"
       password_invalid: "は英字と数字を含む必要があります"
+    activerecord:
+      errors:
+        template:
+          header:
+            one: "%{model}の保存中に1つのエラーが発生しました"
+            other: "%{model}の保存中に%{count}件のエラーが発生しました"
+          body: "次の項目を確認してください"
+  devise:
+    sessions:
+      signed_in: "ログインしました"
+      signed_out: "ログアウトしました"
+      already_signed_out: "すでにログアウトしています"
+    registrations:
+      signed_up: "アカウントが作成されました"
+      updated: "アカウントが更新されました"
+      destroyed: "アカウントが削除されました"
+    passwords:
+      updated: "パスワードが更新されました"
+    confirmations:
+      confirmed: "アカウントが確認されました"
+    failure:
+      already_authenticated: "すでにログインしています"
+      not_found_in_database: "メールアドレスまたはパスワードが間違っています"
+      unconfirmed: "メールアドレスを確認してください"
+      inactive: "アカウントが有効ではありません"
+      locked: "アカウントがロックされています"
