@@ -14,7 +14,7 @@
         <div class="header-inner">
             <div class="site-logo">
                 <a href="<%= root_path %>">
-                    <img src="//cdn.goope.jp/23154/14083023472937jc.jpg" alt="Bagel Mallow">
+                   <%= image_tag '436410747_1389259099134655_8490224785995163075_n.jpg', alt: 'Bagel Mallow' %>
                 </a>
             </div>
             <nav>
@@ -30,7 +30,7 @@
                         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
                     <% end %>
                     
-                    <li><a href="<%= contact_path %>">お問い合わせ</a></li>
+                    <li><a href="<%= new_contact_path %>">お問い合わせ</a></li>
                     <li><%= link_to 'カート', cart_path, class: 'cart-link' %></li>
                 </ul>
             </nav>
