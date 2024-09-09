@@ -105,3 +105,12 @@
 
 - belongs_to :cart
 - belongs_to :item
+
+
+## contacts テーブル
+
+| Column      | Type       | Options                         |
+| ----------- | ---------- | --------------------------------|
+| name        | string     | null: false                     |
+| email       | string     | null: false                     |
+| message     | text       | null: false                     |
