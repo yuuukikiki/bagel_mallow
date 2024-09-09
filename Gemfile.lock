@@ -46,6 +46,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_hash (3.3.1)
+      activesupport (>= 5.0.0)
     activejob (7.0.8.4)
       activesupport (= 7.0.8.4)
       globalid (>= 0.3.6)
@@ -95,7 +97,15 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.5.1)
     erubi (1.13.0)
+    factory_bot (6.5.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.3)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
+    faker (3.4.2)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.0-x86_64-darwin)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -181,6 +191,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (7.0.9)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.8.4)
       actionpack (= 7.0.8.4)
       activesupport (= 7.0.8.4)
@@ -200,6 +213,23 @@ GEM
       railties (>= 5.2)
     rexml (3.3.6)
       strscan
+    rspec-core (3.13.1)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (7.0.1)
+      actionpack (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.1)
     rubocop (1.66.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -264,10 +294,13 @@ PLATFORMS
   x86_64-darwin-23
 
 DEPENDENCIES
+  active_hash
   bootsnap
   capybara
   debug
   devise
+  factory_bot_rails
+  faker
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -275,6 +308,8 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.0)
+  rails-i18n
+  rspec-rails
   rubocop
   selenium-webdriver
   sprockets-rails
