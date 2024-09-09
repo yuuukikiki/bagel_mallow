@@ -1,0 +1,14 @@
+ja:
+  errors:
+    messages:
+      blank: "は必須です"
+      taken: "はすでに登録されています"
+      invalid: "は無効です"
+      phone_number: "は10桁または11桁の数字でなければなりません"
+      greater_than: "は0より大きい数値でなければなりません"
+      greater_than_or_equal_to: "は1以上の整数でなければなりません"
+      email_invalid: "は無効なメールアドレスです"
+      prefecture: "を選択してください"
+      postal_code_invalid: "は無効です。ハイフン(-)を含めてください"
+      not_saved: "保存できませんでした"
+      password_invalid: "は英字と数字を含む必要があります"
