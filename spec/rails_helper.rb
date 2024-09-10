@@ -33,8 +33,6 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 
-I18n.locale = :ja
-
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = Rails.root.join('spec/fixtures')
@@ -66,4 +64,14 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Set locale to Japanese before running tests
+  config.before(:suite) do
+    I18n.locale = :ja
+  end
+
+  # Reset locale after tests
+  config.after(:suite) do
+    I18n.locale = I18n.default_locale
+  end
 end
