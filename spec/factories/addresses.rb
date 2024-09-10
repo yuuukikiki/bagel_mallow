@@ -4,7 +4,6 @@ FactoryBot.define do
     city { '福岡市' }
     street { '1-22-33' }
     building_name { 'ビル名' }
-    phone_number { '09012345678' }
     prefecture_id { 2 }
 
     association :user # userとの関連付け
