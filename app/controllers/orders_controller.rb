@@ -9,10 +9,13 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build(order_params)
     if @order.save
-      redirect_to @order, notice: '注文が完了しました'
+      redirect_to complete_orders_path, notice: '注文が完了しました'
     else
       render :new
     end
+  end
+
+  def complete
   end
 
   private
