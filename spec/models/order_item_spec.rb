@@ -18,13 +18,13 @@ RSpec.describe OrderItem, type: :model do
       it '注文が関連付けられていないと作成できない' do
         @order_item.order = nil
         @order_item.valid?
-        expect(@order_item.errors.full_messages).to include('Orderは必須です')
+        expect(@order_item.errors.full_messages).to include('Orderを入力してください')
       end
 
       it 'アイテムが関連付けられていないと作成できない' do
         @order_item.item = nil
         @order_item.valid?
-        expect(@order_item.errors.full_messages).to include('Itemは必須です')
+        expect(@order_item.errors.full_messages).to include('Itemを入力してください')
       end
     end
   end

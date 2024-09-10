@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
   before do
     @user = FactoryBot.create(:user)
-    @order = FactoryBot.build(:order, user: @user)
+    @address = FactoryBot.create(:address)
+    @order = FactoryBot.build(:order, user: @user, address: @address)
   end
 
   describe '注文の作成' do
@@ -17,13 +18,13 @@ RSpec.describe Order, type: :model do
       it 'ユーザーが関連付けられていないと作成できない' do
         @order.user = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include('Userは必須です')
+        expect(@order.errors.full_messages).to include('Userを入力してください')
       end
 
       it '配送先住所が空では作成できない' do
-        @order.delivery_address = ''
+        @order.address_id = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include(I18n.t('errors.messages.blank'))
+        expect(@order.errors.full_messages).to include('Addressは必須です')
       end
     end
   end
