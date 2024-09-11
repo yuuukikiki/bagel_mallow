@@ -2,20 +2,20 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>カート - Mallow</title>
+  <title>マイページ - Mallow</title>
   <link rel="stylesheet" href="<%= asset_path('application.css') %>">
 </head>
 
 <body>
   <header>
-    <h1>カート</h1>
+    <h1>マイページ</h1>
   </header>
 
   <main>
-    <table id="cart">
-      <%= render partial: 'cart_items', locals: { cart_items: @cart.cart_items } %>
-    </table>
-      <%= link_to 'Continue Shopping', root_path %>
+    <p>名前: <%= @user.name %></p>
+    <p>メール: <%= @user.email %></p>
+    <p>電話番号: <%= @user.phone_number %></p>
+    <%= link_to '注文履歴', order_history_profile_path %>
   </main>
 
   <footer>
