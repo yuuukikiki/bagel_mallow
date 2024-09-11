@@ -1,5 +1,25 @@
-<h1>Your Cart</h1>
-<table id="cart">
-  <%= render partial: 'cart_items', locals: { cart_items: @cart.cart_items } %>
-</table>
-<%= link_to 'Continue Shopping', root_path %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カート - Mallow</title>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
+
+<body>
+  <header>
+    <h1>カート</h1>
+  </header>
+
+  <main>
+    <table id="cart">
+      <%= render partial: 'cart_items', locals: { cart_items: @cart.cart_items } %>
+    </table>
+      <%= link_to 'Continue Shopping', root_path %>
+  </main>
+
+  <footer>
+    <p>©2024 Bagel Mallow. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
