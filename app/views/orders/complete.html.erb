@@ -1,6 +1,26 @@
-<h1>注文完了</h1>
-<p>ご注文いただきありがとうございます。</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>注文完了 - Mallow</title>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
 
-<p>セキュリティのため、注文後はログアウトすることをお勧めします。</p>
+<body>
+  <header>
+    <h1>注文完了</h1>
+  </header>
 
-<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <main>
+    <p>ご注文いただきありがとうございます。</p>
+
+    <p>セキュリティのため、注文後はログアウトすることをお勧めします。</p>
+
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  </main>
+
+  <footer>
+    <p>©2024 Bagel Mallow. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
