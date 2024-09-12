@@ -1,30 +1,30 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
-  get 'profiles/order_history'
-    # お問い合わせページのルーティング
-    resources :contacts, only: [:new, :create]
+  # お問い合わせページのルーティング
+  resources :contacts, only: [:new, :create]
 
-    # カート関連のルーティング
-    resource :cart, only: [:show]
+  # カート関連のルーティング
+  resource :cart, only: [:show] do
+    get 'count', on: :collection  # カートのアイテム数を取得するエンドポイントを追加
+  end
 
-    # カートアイテムのルーティング
-    resources :cart_items, only: [:create, :update, :destroy]
+  # カートアイテムのルーティング
+  resources :cart_items, only: [:create, :update, :destroy]
 
-    # 注文関連のルーティング
-    resources :orders, only: [:index, :new, :create] do
-      collection do
-        get 'complete'
-      end
+  # 注文関連のルーティング
+  resources :orders, only: [:index, :new, :create] do
+    collection do
+      get 'complete'
     end
+  end
 
-    # ユーザー認証関連のルーティング
-    devise_for :users
+  # ユーザー認証関連のルーティング
+  devise_for :users
 
-    # トップページのルーティング
-    root 'items#index'
+  # トップページのルーティング
+  root 'items#index'
 
-    # マイページのルーティング
-    resource :profile, only: [:show] do
-      get 'order_history', on: :collection
-    end
+  # マイページのルーティング
+  resource :profile, only: [:show] do
+    get 'order_history', on: :collection
+  end
 end
