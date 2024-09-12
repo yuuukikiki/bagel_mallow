@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>メニュー - Bagel Mallow</title>
-  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
 </head>
 <body>
   <header>
@@ -13,23 +13,23 @@
   <main>
     <h2>Bagels</h2>
     <ul class="menu-list">
-      <li class="menu-item">
-        <%= image_tag '455024700_498054372923836_6681410110622218304_n.jpg', alt: 'Everything Bagel' %>
-        <div class="item-details">
-          <h3>Classic Bagel</h3>
-          <p>A traditional bagel with a golden crust and chewy interior.</p>
-          <span class="price">$2.50</span>
-        </div>
-      </li>
-      <li class="menu-item">
-        <%= image_tag '455024700_498054372923836_6681410110622218304_n.jpg', alt: 'Everything Bagel' %>
-        <div class="item-details">
-          <h3>Everything Bagel</h3>
-          <p>Sprinkled with sesame, poppy seeds, and more.</p>
-          <span class="price">$2.75</span>
-        </div>
-      </li>
-      <!-- Add more items as needed -->
+      <% @items.each do |item| %> <!-- 動的にアイテムを表示 -->
+        <li class="menu-item">
+          <%= image_tag item.image_url, alt: item.name, class: 'menu-image' %> <!-- 商品画像 -->
+          <div class="item-details">
+            <h3><%= item.name %></h3> <!-- 商品名 -->
+            <p><%= item.description %></p> <!-- 商品説明 -->
+            <span class="price"><%= number_to_currency(item.price) %></span> <!-- 価格 -->
+            
+            <div class="quantity-controls">
+              <button class="decrement" data-item-id="<%= item.id %>">-</button>
+              <input type="number" value="1" min="1" data-item-id="<%= item.id %>" class="quantity-field">
+              <button class="increment" data-item-id="<%= item.id %>">+</button>
+            </div>
+            <button class="add-to-cart" data-item-id="<%= item.id %>">カートに追加</button> <!-- カートに追加ボタン -->
+          </div>
+        </li>
+      <% end %>
     </ul>
   </main>
 
