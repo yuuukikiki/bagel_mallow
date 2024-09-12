@@ -2,20 +2,40 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>カート - Mallow</title>
+  <title>カートの中身 - Mallow</title>
   <link rel="stylesheet" href="<%= asset_path('application.css') %>">
 </head>
 
 <body>
   <header>
-    <h1>カート</h1>
+    <h1>カートの中身</h1>
   </header>
 
   <main>
+    <!-- カートアイテムの一覧表示 -->
     <table id="cart">
-      <%= render partial: 'cart_items', locals: { cart_items: @cart.cart_items } %>
+      <% if @cart.cart_items.any? %>
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'carts/cart_items', locals: { cart_items: @cart.cart_items } %>
+        </tbody>
+      <% else %>
+        <p>カートは空です</p>
+      <% end %>
     </table>
-      <%= link_to 'Continue Shopping', root_path %>
+
+    <!-- 購入手続きへのリンク -->
+    <%= link_to 'ショッピングを続ける', orders_path %>
+    <%= link_to '購入手続きへ進む', checkout_path %> <!-- ここは実際の購入手続きのパスに変更 -->
   </main>
 
   <footer>
