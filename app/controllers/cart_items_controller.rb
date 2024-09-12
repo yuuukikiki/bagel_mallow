@@ -2,31 +2,37 @@ class CartItemsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @cart = current_user.cart
-    @item = Item.find(params[:item_id])
-    @cart_item = @cart.cart_items.find_or_initialize_by(item: @item)
-    @cart_item.quantity += params[:quantity].to_i
-    @cart_item.save
-    redirect_to cart_path
-  end
+    @cart = current_user.cart || Cart.create(user: current_user)
 
-  def update
-    @cart = current_user.cart
-    @cart_item = @cart.cart_items.find(params[:id])
-    @cart_item.update(cart_item_params)
-    redirect_to cart_path
-  end
+    cart_items_params.each do |item_id, quantity|
+      item = Item.find(item_id)
+      quantity = quantity.to_i
 
-  def destroy
-    @cart = current_user.cart
-    @cart_item = @cart.cart_items.find(params[:id])
-    @cart_item.destroy
-    redirect_to cart_path
+      next unless quantity > 0
+
+      @cart_item = @cart.cart_items.find_by(item_id: item.id)
+
+      if @cart_item
+        @cart_item.quantity += quantity
+      else
+        @cart_item = @cart.cart_items.new(item:, quantity:)
+      end
+
+      @cart_item.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to cart_path(@cart), notice: 'カートに商品が追加されました。' }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace('cart_icon', partial: 'carts/cart_icon',
+                                                               locals: { cart_items_count: @cart.cart_items.count })
+      end
+    end
   end
 
   private
 
-  def cart_item_params
-    params.require(:cart_item).permit(:quantity)
+  def cart_items_params
+    params.require(:cart_items).permit!
   end
 end

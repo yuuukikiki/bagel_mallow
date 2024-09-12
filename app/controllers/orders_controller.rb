@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @items = Item.all
+  end
+
   def new
     @order = Order.new
     @order.build_address
