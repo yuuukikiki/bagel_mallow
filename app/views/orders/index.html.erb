@@ -20,10 +20,10 @@
             <h3><%= item.name %></h3> <!-- 商品名 -->
             <p><%= item.description %></p> <!-- 商品説明 -->
             <span class="price"><%= number_to_currency(item.price) %></span> <!-- 価格 -->
-            
+
             <div class="quantity-controls">
               <button class="decrement" data-item-id="<%= item.id %>">-</button>
-              <input type="number" value="1" min="1" data-item-id="<%= item.id %>" class="quantity-field">
+              <input type="number" value="0" min="0" data-item-id="<%= item.id %>" class="quantity-field">
               <button class="increment" data-item-id="<%= item.id %>">+</button>
             </div>
             <button class="add-to-cart" data-item-id="<%= item.id %>">カートに追加</button> <!-- カートに追加ボタン -->

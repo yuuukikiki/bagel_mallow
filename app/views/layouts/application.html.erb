@@ -8,6 +8,7 @@
     <%= csrf_meta_tags %>
     <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
     <%= stylesheet_link_tag 'index', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 </head>
 <body>
     <header>
@@ -21,16 +22,16 @@
                 <ul class="main-nav">
                     <li><a href="<%= root_path %>">トップ</a></li>
                     <li><a href="<%= orders_path %>">メニュー</a></li>
-                    
+
                     <% if user_signed_in? %>
                         <li><%= link_to current_user.name, profile_path, class: "user-name" %></li>
-                        <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %></li>     
+                        <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %></li>
                         <li><%= link_to 'カート', cart_path, class: 'cart-link' %></li>
                     <% else %>
                         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
                         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
                     <% end %>
-                    
+
                     <li><%= link_to 'お問い合わせ', new_contact_path %></li>
                 </ul>
             </nav>
