@@ -21,75 +21,28 @@
   </header>
 
   <main>
-    <h2>注文フォーム</h2>
+   <h2>注文フォーム</h2>
+
     <%= form_with model: @order, url: orders_path, local: true do |f| %>
-      <div class="form-group">
-        <%= f.label :item_id, '選択された商品:' %>
-        <%= f.collection_select :item_id, Item.all, :id, :name, prompt: '商品を選んでください', disabled: true %>
+   <% if @order.errors.any? %>
+      <div class="error-messages">
+        <h2>以下のエラーがあります:</h2>
+        <ul>
+          <% @order.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
       </div>
-
-      <div class="form-group">
-        <p>数量: <%= @order.quantity %></p>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :name, 'お名前:' %>
-        <%= f.text_field :name, required: true %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :email, 'メールアドレス:' %>
-        <%= f.email_field :email, required: true %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :phone_number, '電話番号:' %>
-        <%= f.text_field :phone_number, required: true %>
-      </div>
-
-      <fieldset>
-        <legend>配送先住所</legend>
-        <%= f.fields_for :address do |af| %>
-          <div class="form-group">
-            <%= af.label :postal_code, '郵便番号:' %>
-            <%= af.text_field :postal_code, required: true %>
-          </div>
-
-          <div class="form-group">
-            <%= af.label :prefecture_id, '都道府県:' %>
-            <%= af.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: '選択してください' %>
-          </div>
-
-          <div class="form-group">
-            <%= af.label :city, '市区町村:' %>
-            <%= af.text_field :city, required: true %>
-          </div>
-
-          <div class="form-group">
-            <%= af.label :street, '番地:' %>
-            <%= af.text_field :street, required: true %>
-          </div>
-
-          <div class="form-group">
-            <%= af.label :building_name, '建物名（任意）:' %>
-            <%= af.text_field :building_name %>
-          </div>
-        <% end %>
-      </fieldset>
-
-      <div class="form-group">
-        <p>商品と数量:</p>
-  <ul>
-    <% @order.order_items.each do |order_item| %>
-      <li>
-        商品名: <%= order_item.item.name %> - 数量: <%= order_item.quantity %>
-      </li>
     <% end %>
-  </ul>
-</div>
 
-  <footer>
-    <p>©2024 Bagel Mallow. All Rights Reserved.</p>
-  </footer>
-</body>
+        <%= f.fields_for :address do |address_field| %>
+          <%= render 'address_fields', f: address_field %>
+        <% end %>
+
+      <div class="form-group">
+        <%= f.submit '注文を確定する', class: 'submit-btn' %>
+      </div>
+    <% end %>
+  </main>
+  </body>
 </html>

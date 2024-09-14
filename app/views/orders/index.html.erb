@@ -20,7 +20,7 @@
             <h3><%= item.name %></h3> <!-- 商品名 -->
             <p><%= item.description %></p> <!-- 商品説明 -->
             <span class="price"><%= number_to_currency(item.price) %></span> <!-- 価格 -->
-            
+
             <div class="quantity-controls">
               <button class="decrement" data-item-id="<%= item.id %>">-</button>
               <input type="number" value="0" min="0" data-item-id="<%= item.id %>" class="quantity-field">
@@ -36,5 +36,13 @@
   <footer>
     <p>©2024 Bagel Mallow. All Rights Reserved.</p>
   </footer>
+
+   <!-- カートアイコンを追加 -->
+  <div class="cart-icon">
+    <%= link_to cart_path do %>
+      <%= image_tag 'cart-icon.jpeg', alt: 'カートアイコン' %>
+    <span>"カート"</span>
+    <% end %>
+  </div>
 </body>
 </html>
