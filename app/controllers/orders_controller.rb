@@ -9,15 +9,17 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.build_address
 
-    # ユーザーが以前に注文したことがある場合、最後の注文の住所を設定
+    # デバッグ: アドレスがちゃんと作られているか確認
+    puts @order.address.inspect
+
     return unless current_user.orders.any?
 
     last_order = current_user.orders.order(created_at: :desc).first
     return unless last_order.address
 
-    @order.address_attributes = last_order.address.attributes.slice(
-      'postal_code', 'prefecture_id', 'city', 'street', 'building_name', 'phone_number'
-    )
+    @order.build_address(last_order.address.attributes.slice(
+                           'postal_code', 'prefecture_id', 'city', 'street', 'building_name', 'phone_number'
+                         ))
   end
 
   def create
@@ -36,8 +38,8 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      :item_id,
-      address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number]
+      address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number],
+      order_items_attributes: [:item_id, :quantity] # order_items_attributes を追加
     )
   end
 end

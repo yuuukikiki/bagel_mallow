@@ -36,5 +36,13 @@
   <footer>
     <p>©2024 Bagel Mallow. All Rights Reserved.</p>
   </footer>
+
+   <!-- カートアイコンを追加 -->
+  <div class="cart-icon">
+    <%= link_to cart_path do %>
+      <%= image_tag 'cart-icon.jpeg', alt: 'カートアイコン' %>
+    <span>"カート"</span>
+    <% end %>
+  </div>
 </body>
 </html>
