@@ -1,318 +1,189 @@
-/* =======================
-   基本設定
-   ======================= */
-   html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans Condensed', sans-serif;
-    color: #333;
-    background-color: #f4f4f4;
-    height: 100%;
-  }
-
-  body {
-    font-family: 'Open Sans Condensed', sans-serif, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-
-  /* =======================
-     ヘッダー設定
-     ======================= */
-  header {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-  }
-
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    max-width: 1200px; /* ヘッダー全体を中央に寄せる */
-    margin: 0 auto;
-  }
-
-  .site-logo img {
-    max-width: none;
-    width: 200px;
-    height: auto;
-  }
-
-#cart-count {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 5px 10px;
-  font-size: 14px;
-  font-weight: bold;
+/* 基本設定 */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+  height: 100%;
 }
 
-  /* =======================
-     ナビゲーション設定
-     ======================= */
-  nav {
-    display: flex; /* 横並びに設定 */
-  }
-
-  .main-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* メニューを横並びに */
-    align-items: center; /* メニューアイテムを中央に揃える */
-  }
-
-  .main-nav li {
-    margin-right: 20px;
-  }
-
-  .main-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    padding: 10px 15px; /* メニューアイテムの内側のスペース */
-  }
-
-  .main-nav a.active {
-    color: #007bff;
-    border-bottom: 2px solid #007bff; /* アクティブメニューに下線を追加 */
-  }
-
-  /* =======================
-     ユーザーリンク
-     ======================= */
-  .user-name {
-    color: #007bff;
-  }
-
-  .login, .sign-up {
-    color: #007bff;
-  }
-
-  .logout {
-    color: #ff0000;
-  }
-
-  .login:hover, .sign-up:hover {
-    text-decoration: underline;
-  }
-
-  /* =======================
-     トップ情報エリア
-     ======================= */
-  .welcome-info, .top-info {
-    background-color: #fff;
-    padding: 20px;
-    border-top: 1px solid #ddd;
-  }
-
-  .top-info ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .top-info li {
-    margin-bottom: 10px;
-  }
-
-  .top-info span {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-
-  /* =======================
-     スライダー設定
-     ======================= */
-  .slider {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 480px;
-    background: #000;
-  }
-
-  .slider .slider_wrap {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 100%;
-  }
-
-  .slider > ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .slider > ul > li {
-    flex: 0 0 100%;
-    height: 100%;
-  }
-
-  .slider > ul > li > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* =======================
-     スライダーのボタン設定
-     ======================= */
-  .slider_prev, .slider_next {
-    position: absolute;
-    top: 50%;
-    width: 55px;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    text-align: center;
-    line-height: 480px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 100;
-    transform: translateY(-50%);
-  }
-
-  .slider_prev {
-    left: 0;
-  }
-
-  .slider_next {
-    right: 0;
-  }
-
-  /* =======================
-     インスタグラムセクション
-     ======================= */
-  .instagram img {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    width: 100px;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-    border-radius: 10px;
-  }
-
-  /* =======================
-     フッター設定
-     ======================= */
-  footer {
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-    padding: 20px;
-  }
-
-  .footer-copyright {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-  }
-
-  .footer-copyright a {
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .footer-copyright a:hover {
-    text-decoration: underline;
-  }
-
-  /* =======================
-     カート内の画像サイズ調整
-     ======================= */
-.cart-item-image {
-  max-width: 100px; /* 画像の最大幅を設定 */
-  height: auto; /* 高さを自動調整 */
-  object-fit: cover; /* 画像がはみ出さないように調整 */
-}
-
-/* カートテーブルのスタイル */
-#cart {
+/* スライダー */
+.slider {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  border-collapse: collapse;
+  height: 480px;
+  background: #000;
 }
 
-#cart th, #cart td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
+.slider .slider_wrap {
+  display: flex;
+  transition: left 0.5s ease-in-out;
 }
 
-#cart th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
-
-/* メニューリストのスタイル */
-.menu-list {
-  list-style: none;
+.slider > ul {
+  display: flex;
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
-.menu-item {
+.slider > ul > li {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.slider > ul > li > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider_prev, .slider_next {
+  position: absolute;
+  top: 50%;
+  width: 55px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  line-height: 480px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 100;
+  transform: translateY(-50%);
+}
+
+.slider_prev {
+  left: 0;
+}
+
+.slider_next {
+  right: 0;
+}
+
+/* ヘッダー */
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-inner {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
+  justify-content: space-between;
+  padding: 10px;
+  max-width: 1200px; /* 中央寄せにするための最大幅 */
+  margin: 0 auto; /* 中央寄せ */
 }
 
-.menu-item img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  margin-right: 15px;
+.site-logo img {
+  max-width: 50px; 
+  height: 50px;
 }
 
-.item-details h3 {
-  font-size: 18px;
+nav {
+  display: flex; /* 横並びにするための設定 */
+}
+
+.main-nav {
+  list-style: none;
   margin: 0;
+  padding: 0;
+  display: flex; /* 横並びにするための設定 */
+  align-items: center; /* メニューアイテムを中央に揃える */
 }
 
-.item-details p {
-  margin: 5px 0;
+.main-nav li {
+  margin-right: 20px;
 }
 
-.price {
-  font-weight: bold;
-}
-
-/* カートアイコンのスタイル */
-.cart-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  text-align: center; /* アイコンとテキストを中央揃え */
-}
-
-.cart-icon a {
-  display: block;
+.main-nav a {
   text-decoration: none;
-  color: #333; /* リンクの色 */
-}
-
-.cart-icon img {
-  width: 80px;
-  height: auto;
-  border-radius: 50%;
-}
-
-.cart-icon span {
-  display: block;
-  margin-top: 5px;
-  font-size: 16px;
+  color: #333;
   font-weight: bold;
+  padding: 10px 15px; /* メニューアイテムの内側のスペース */
+}
+
+.main-nav a.active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff; /* アクティブメニューの下に線を追加 */
+}
+
+/* ユーザーリンク */
+.user-name {
+  color: #007bff;
+}
+
+.login, .sign-up {
+  color: #007bff;
+}
+
+.logout {
+  color: #ff0000;
+}
+
+.login:hover, .sign-up:hover {
+  text-decoration: underline;
+}
+
+/* トップ情報エリア */
+.welcome-info {
+  background-color: #fff;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.top-info {
+  background-color: #fff;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.top-info ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-info li {
+  margin-bottom: 10px;
+}
+
+.top-info span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* インスタグラムセクション */
+.instagram img {
+  width: 100%;
+  max-width: 600px; /* インスタグラム画像の最大幅を指定 */
+  height: auto;
+  display: block;
+  margin: 20px auto; /* 中央寄せ */
+}
+
+/* フッター */
+footer {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 20px;
+}
+
+.footer-copyright {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.footer-copyright a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-copyright a:hover {
   text-decoration: underline;
 }
