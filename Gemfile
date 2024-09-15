@@ -16,7 +16,7 @@ gem "mysql2", "~> 0.5"
 gem "puma", "~> 5.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -77,3 +77,4 @@ gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 gem 'rails-i18n'
 gem 'pry-rails'
+gem "rails-ujs"
