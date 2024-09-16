@@ -6,6 +6,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+     <!-- Google Fontsのプリコネクトとフォントリンク -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="site-logo">
+                <a href="<%= root_path %>">
+                   <%= image_tag 'bagle.mallow.jpg', alt: 'Bagel Mallow' %>
+                </a>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="<%= root_path %>">トップ</a></li>
+                    <li><a href="<%= orders_path %>">メニュー</a></li>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
