@@ -4,11 +4,70 @@
    html, body {
     margin: 0;
     padding: 0;
+
+    font-family: 'Zen Maru Gothic', sans-serif;
+
     font-family: 'Open Sans Condensed', sans-serif;
+
     color: #333;
     background-color: #f4f4f4;
     height: 100%;
   }
+
+
+  body {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+
+  /* =======================
+     ヘッダー設定
+     ======================= */
+  header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    max-width: 1200px; /* ヘッダー全体を中央に寄せる */
+    margin: 0 auto;
+  }
+
+  .site-logo img {
+    max-width: none;
+    width: 200px;
+    height: auto;
+  }
+
+#cart-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* スライダー */
+.slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 480px;
+  background: #000;
+}
+
+
 
   body {
     font-family: 'Open Sans Condensed', sans-serif, Arial, sans-serif;
