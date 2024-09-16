@@ -106,27 +106,30 @@
   /* =======================
      トップ情報エリア
      ======================= */
-  .welcome-info, .top-info {
-    background-color: #fff;
-    padding: 20px;
-    border-top: 1px solid #ddd;
-  }
+     .welcome-info {
+      background-color: #fff;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
 
-  .top-info ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+    .top-info {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
 
-  .top-info li {
-    margin-bottom: 10px;
-  }
+    .responsive-map {
+      width: 100%;
+      height: 450px;
+      border: 0;
+    }
 
-  .top-info span {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-
+    @media (max-width: 768px) {
+      .responsive-map {
+        height: 300px;
+      }
+    }
   /* =======================
      スライダー設定
      ======================= */
