@@ -12,6 +12,7 @@
 
 - has_many :addresses
 - has_many :orders
+- has_one :cart
 
 
 ## addresses テーブル
@@ -29,12 +30,12 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :order
+- has_many :orders
 - belongs_to_active_hash :prefecture
 
 
 
-## item テーブル
+## items テーブル
 
 | Column           | Type       | Options     |
 | -----------------| ---------- | ----------- |
@@ -46,6 +47,7 @@
 ### Association
 
 - has_many :order_items
+- has_many :cart_items
 
 
 ## orders テーブル
@@ -55,12 +57,12 @@
 | user             | references | null: false, foreign_key: true  |
 | total_amount     | integer    | null: false                     |
 | status           | string     | null: false                     |
-|shipping_address  | references | null: false, foreign_key: true  |
+| shipping_address | references | null: false, foreign_key: true  |
 
 ### Association
 
 - belongs_to :user
-- has_one :address
+- belongs_to :address
 - has_many :order_items
 
 
@@ -69,7 +71,7 @@
 | Column           | Type       | Options                         |
 | ---------------- | ---------- | ------------------------------- |
 | order            | references | null: false, foreign_key: true  |
-| product          | references | null: false, foreign_key: true  |
+| item             | references | null: false, foreign_key: true  |
 | quantity         | integer    | null: false                     |
 | price            | integer    | null: false                     |
 
@@ -77,3 +79,38 @@
 
 - belongs_to :order
 - belongs_to :item
+
+
+## carts テーブル
+
+| Column      | Type       | Options                         |
+| ----------- | ---------- | --------------------------------|
+| user        | references | null: false, foreign_key: true   |
+
+### Association
+
+- belongs_to :user
+- has_many :cart_items, dependent: :destroy
+
+
+## cart_items テーブル
+
+| Column      | Type       | Options                         |
+| ----------- | ---------- | --------------------------------|
+| cart        | references | null: false, foreign_key: true  |
+| item        | references | null: false, foreign_key: true  |
+| quantity    | integer    | null: false                     |
+
+### Association
+
+- belongs_to :cart
+- belongs_to :item
+
+
+## contacts テーブル
+
+| Column      | Type       | Options                         |
+| ----------- | ---------- | --------------------------------|
+| name        | string     | null: false                     |
+| email       | string     | null: false                     |
+| message     | text       | null: false                     |

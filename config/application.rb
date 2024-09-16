@@ -10,7 +10,9 @@ module BagelMallow
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-
+    config.active_storage.variant_processor = :mini_magick
+    # Set default locale to Japanese
+    config.i18n.default_locale = :ja
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

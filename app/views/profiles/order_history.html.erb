@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>注文履歴 - Mallow</title>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
+<body>
+  <header>
+    <h1>注文履歴</h1>
+  </header>
+
+  <main>
+    <% if @orders.any? %>
+      <table>
+        <thead>
+          <tr>
+            <th>注文日</th>
+            <th>注文番号</th>
+            <th>合計金額</th>
+            <th>配送先住所</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+              <td><%= order.id %></td>
+              <td><%= number_to_currency(order.total_amount) %></td>
+              <td><%= order.shipping_address %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>注文履歴はありません。</p>
+    <% end %>
+  </main>
+
+  <footer>
+    <p>©2024 Bagel Mallow. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

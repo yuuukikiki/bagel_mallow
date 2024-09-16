@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カートの中身 - Mallow</title>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
+
+<body>
+  <header>
+    <h1>カートの中身</h1>
+  </header>
+
+  <main>
+    <!-- カートアイテムの一覧表示 -->
+    <table id="cart">
+      <% if @cart.cart_items.any? %>
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'carts/cart_items', locals: { cart_items: @cart.cart_items } %>
+        </tbody>
+      <% else %>
+        <p>カートは空です</p>
+      <% end %>
+    </table>
+
+    <!-- 購入手続きへのリンク -->
+    <%= link_to 'ショッピングを続ける', orders_path %>
+
+    <%= link_to '購入手続きへ進む', '' %> <!-- ここは実際の購入手続きのパスに変更 -->
+
+    <%= link_to '購入手続きへ進む', new_order_path %>
+
+  </main>
+
+  <footer>
+    <p>©2024 Bagel Mallow. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
