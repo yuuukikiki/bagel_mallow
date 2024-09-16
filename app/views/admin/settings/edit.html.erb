@@ -1,0 +1,19 @@
+<h1>サイト設定編集</h1>
+
+<%= form_with model: @settings, url: admin_settings_path, method: :patch do |form| %>
+  <div>
+    <%= form.label :site_name, 'サイト名' %>
+    <%= form.text_field :site_name %>
+  </div>
+
+  <div>
+    <%= form.label :contact_email, 'お問い合わせメール' %>
+    <%= form.email_field :contact_email %>
+  </div>
+
+  <div>
+    <%= form.submit '保存' %>
+  </div>
+<% end %>
+
+<%= link_to '戻る', admin_root_path %>
