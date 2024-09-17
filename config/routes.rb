@@ -9,9 +9,6 @@ Rails.application.routes.draw do
   # トップページ
   root 'items#index'
 
-  # お問い合わせページ
-  resources :contacts, only: [:new, :create]
-
   # カート関連
   resource :cart, only: [:show] do
     get 'count', on: :collection
@@ -58,6 +55,5 @@ Rails.application.routes.draw do
     resources :users
 
     # サイト設定管理
-    resource :settings, only: [:edit, :update]
   end
 end

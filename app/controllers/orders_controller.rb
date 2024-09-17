@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
     @cart = current_user.cart
     @cart_items = @cart.cart_items.includes(:item) if @cart
@@ -34,19 +33,6 @@ class OrdersController < ApplicationController
 
     if @order.save
       redirect_to complete_orders_path(@order), notice: '注文が完了しました'
-
-  def new
-    @order = Order.new
-    @order.build_address # Addressオブジェクトの初期化
-  end
-
-  def create
-    @order = Order.new(order_params)
-    @order.user = current_user
-
-    if @order.save
-      redirect_to complete_orders_path, notice: '注文が正常に作成されました。'
-
     else
       render :new
     end
@@ -61,12 +47,7 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(
       address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number],
-
-      order_items_attributes: [:item_id, :quantity],
-      total_amount: []
-
-      order_items_attributes: [:item_id, :quantity] # 商品情報のネストされた属性をパーミット
-
+      order_items_attributes: [:item_id, :quantity]
     )
   end
 end
