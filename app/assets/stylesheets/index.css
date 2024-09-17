@@ -4,100 +4,27 @@
    html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Zen Maru Gothic', sans-serif;
+    font-family: 'Zen Maru Gothic', sans-serif; /* フォントを一貫して設定 */
     color: #333;
     background-color: #f4f4f4;
     height: 100%;
-}
-
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
   }
 
+  /* フォントウェイト設定 */
   .zen-maru-gothic-light {
-    font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 300;
-    font-style: normal;
-}
-
-.zen-maru-gothic-regular {
-    font-family: 'Zen Maru Gothic', sans-serif;
+  }
+  .zen-maru-gothic-regular {
     font-weight: 400;
-    font-style: normal;
-}
-
-.zen-maru-gothic-medium {
-    font-family: 'Zen Maru Gothic', sans-serif;
+  }
+  .zen-maru-gothic-medium {
     font-weight: 500;
-    font-style: normal;
-}
-
-.zen-maru-gothic-bold {
-    font-family: 'Zen Maru Gothic', sans-serif;
+  }
+  .zen-maru-gothic-bold {
     font-weight: 700;
-    font-style: normal;
-}
-
-.zen-maru-gothic-black {
-    font-family: 'Zen Maru Gothic', sans-serif;
+  }
+  .zen-maru-gothic-black {
     font-weight: 900;
-    font-style: normal;
-}
-
-  /* =======================
-     ヘッダー設定
-     ======================= */
-  header {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-  }
-
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    max-width: 1200px; /* ヘッダー全体を中央に寄せる */
-    margin: 0 auto;
-  }
-
-  .site-logo img {
-    max-width: none;
-    width: 200px;
-    height: auto;
-  }
-
-#cart-count {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 5px 10px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-/* スライダー */
-.slider {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 480px;
-  background: #000;
-}
-
-
-
-  body {
-    font-family: 'Open Sans Condensed', sans-serif, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
   }
 
   /* =======================
@@ -114,27 +41,26 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    max-width: 1200px; /* ヘッダー全体を中央に寄せる */
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto; /* ヘッダーを中央寄せ */
   }
 
   .site-logo img {
-    max-width: none;
     width: 200px;
     height: auto;
   }
 
-#cart-count {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 5px 10px;
-  font-size: 14px;
-  font-weight: bold;
-}
+  #cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+  }
 
   /* =======================
      ナビゲーション設定
@@ -147,8 +73,8 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex; /* メニューを横並びに */
-    align-items: center; /* メニューアイテムを中央に揃える */
+    display: flex;
+    align-items: center;
   }
 
   .main-nav li {
@@ -159,12 +85,12 @@
     text-decoration: none;
     color: #333;
     font-weight: bold;
-    padding: 10px 15px; /* メニューアイテムの内側のスペース */
+    padding: 10px 15px;
   }
 
   .main-nav a.active {
     color: #007bff;
-    border-bottom: 2px solid #007bff; /* アクティブメニューに下線を追加 */
+    border-bottom: 2px solid #007bff;
   }
 
   /* =======================
@@ -189,30 +115,31 @@
   /* =======================
      トップ情報エリア
      ======================= */
-     .welcome-info {
-      background-color: #fff;
-      padding: 20px;
-      border-bottom: 1px solid #ddd;
-    }
+  .welcome-info {
+    background-color: #fff;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
 
-    .top-info {
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      border: none;
-    }
+  .top-info {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
 
+  .responsive-map {
+    width: 100%;
+    height: 450px;
+    border: 0;
+  }
+
+  @media (max-width: 768px) {
     .responsive-map {
-      width: 100%;
-      height: 450px;
-      border: 0;
+      height: 300px;
     }
+  }
 
-    @media (max-width: 768px) {
-      .responsive-map {
-        height: 300px;
-      }
-    }
   /* =======================
      スライダー設定
      ======================= */
@@ -248,9 +175,7 @@
     object-fit: cover;
   }
 
-  /* =======================
-     スライダーのボタン設定
-     ======================= */
+  /* スライダーボタン */
   .slider_prev, .slider_next {
     position: absolute;
     top: 50%;
@@ -284,8 +209,6 @@
     z-index: 1000;
     width: 100px;
     height: auto;
-    display: block;
-    margin: 20px auto;
     border-radius: 10px;
   }
 
@@ -317,88 +240,92 @@
   /* =======================
      カート内の画像サイズ調整
      ======================= */
-.cart-item-image {
-  max-width: 100px; /* 画像の最大幅を設定 */
-  height: auto; /* 高さを自動調整 */
-  object-fit: cover; /* 画像がはみ出さないように調整 */
-}
+  .cart-item-image {
+    max-width: 100px;
+    height: auto;
+    object-fit: cover;
+  }
 
-/* カートテーブルのスタイル */
-#cart {
-  width: 100%;
-  border-collapse: collapse;
-}
+  /* カートテーブル */
+  #cart {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-#cart th, #cart td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
+  #cart th, #cart td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
 
-#cart th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
+  #cart th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
 
-/* メニューリストのスタイル */
-.menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  /* =======================
+     メニューリストのスタイル
+     ======================= */
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-.menu-item {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-}
+  .menu-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
 
-.menu-item img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  margin-right: 15px;
-}
+  .menu-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 15px;
+  }
 
-.item-details h3 {
-  font-size: 18px;
-  margin: 0;
-}
+  .item-details h3 {
+    font-size: 18px;
+    margin: 0;
+  }
 
-.item-details p {
-  margin: 5px 0;
-}
+  .item-details p {
+    margin: 5px 0;
+  }
 
-.price {
-  font-weight: bold;
-}
+  .price {
+    font-weight: bold;
+  }
 
-/* カートアイコンのスタイル */
-.cart-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  text-align: center; /* アイコンとテキストを中央揃え */
-}
+  /* =======================
+     カートアイコン
+     ======================= */
+  .cart-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    text-align: center;
+  }
 
-.cart-icon a {
-  display: block;
-  text-decoration: none;
-  color: #333; /* リンクの色 */
-}
+  .cart-icon a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
 
-.cart-icon img {
-  width: 80px;
-  height: auto;
-  border-radius: 50%;
-}
+  .cart-icon img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+  }
 
-.cart-icon span {
-  display: block;
-  margin-top: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: underline;
-}
+  .cart-icon span {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
