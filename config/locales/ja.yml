@@ -12,6 +12,7 @@ ja:
       postal_code_invalid: "は無効です。ハイフン(-)を含めてください"
       not_saved: "保存できませんでした"
       password_invalid: "は英字と数字を含む必要があります"
+
     activerecord:
       errors:
         template:
@@ -19,6 +20,18 @@ ja:
             one: "%{model}の保存中に1つのエラーが発生しました"
             other: "%{model}の保存中に%{count}件のエラーが発生しました"
           body: "次の項目を確認してください"
+
+  activerecord:
+    attributes:
+      address:
+        postal_code: "郵便番号"
+        prefecture_id: "都道府県"
+        city: "市区町村"
+        street: "番地"
+        building_name: "建物名"
+        phone_number: "電話番号"
+        user: "ユーザーの住所"
+
   devise:
     sessions:
       signed_in: "ログインしました"
