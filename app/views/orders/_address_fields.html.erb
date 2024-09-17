@@ -1,3 +1,10 @@
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+  <div class="form-group">
+    <%= f.label :total_amount, '合計金額:' %>
+    <%= f.text_field :total_amount, value: @total_amount, readonly: true %>
+  </div>
+<% end %>
+
 <%= f.fields_for :address do |address_form| %>
   <div class="form-group">
     <%= address_form.label :postal_code, '郵便番号:' %>

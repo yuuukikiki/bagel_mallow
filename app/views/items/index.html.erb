@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,71 +11,6 @@
     <script src="scripts.js"></script>
 </head>
 <body>
-    <header>
-        <div class="header-inner">
-            <div class="site-logo">
-                <a href="https://nichinichisha.com">
-                    <img src="//cdn.goope.jp/23154/14083023472937jc.jpg" alt="Bagel Mallow">
-                </a>
-            </div>
-            <nav>
-                <ul class="main-nav">
-                  <li><a href="/">Home</a></li>
-                  <% if user_signed_in? %>
-                    <li><%= link_to current_user.nickname, root_path, class: "user-nickname" %></li>
-                    <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %></li>
-                  <% else %>
-                    <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-                    <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-                  <% end %>
-                  <li><a href="http://nichinichisha.shop-pro.jp/" target="_blank">Menu</a></li>
-                  <li><a href="/free/shopinfo">Shop Info</a></li>
-                  <li><a href="/contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <div class="slider">
-            <!-- Slider images go here -->
-        </div>
-        <section class="welcome-info">
-            <h2>Welcome</h2>
-            <p>食べてほっこり、体と子供に優しいパンとベーグル。</p>
-            <p>元海上自衛隊店主が作る自家製酵母の手作りベーグル。</p>
-            <p>国産 岡山県産の食材にこだわっています。</p>
-        </section>
-        <section class="top-info">
-            <h2>Information</h2>
-            <ul>
-                <li><span>2024-09-02</span><a href="/info/3915990">9月2日(月)21：00～通販受付いたします</a></li>
-                <li><span>2024-07-30</span><a href="/info/5845991">夏季休業のおしらせ</a></li>
-                <li><span>2024-04-21</span><a href="/info/4506422">春の陶器市開催です</a></li>
-                <li><span>2024-02-06</span><a href="/info/5577751">臨時休業いたします</a></li>
-                <li><span>2023-12-10</span><a href="/info/5486533">年末年始のお休み</a></li>
-            </ul>
-        </section>
-        <section class="instagram">
-            <a href="https://www.instagram.com/bagel.mallow/">
-                <img src="https://cdn.goope.jp/23154/220209214355-6203b70bc09b0_t.jpg" alt="Instagram">
-            </a>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-copyright">
-                ©2024 <a href="https://baglemallow.com">Bagel Mallow</a>. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
-
-<div class="slider">
- <!-- Slider images go here -->
-
 <div class="slider">
     <!-- Slider images go here -->
 
@@ -107,8 +41,5 @@
     <a href="https://www.instagram.com/bagel.mallow/">
         <img src="https://cdn.goope.jp/23154/220209214355-6203b70bc09b0_t.jpg" alt="Instagram">
     </a>
-
 </section>
-
-</section>
-
+</body>
