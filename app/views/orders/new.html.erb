@@ -21,9 +21,10 @@
   </header>
 
   <main>
-   <h2>注文フォーム</h2>
+    <h2>注文フォーム</h2>
 
     <%= form_with model: @order, url: orders_path, local: true do |f| %>
+
       <% if @order.errors.any? %>
         <div class="error-messages">
             <h2>以下のエラーがあります:</h2>
@@ -39,10 +40,42 @@
         <%= render 'address_fields', f: f %>
       <% end %>
 
+
+      <% if @order.errors.any? %>
+        <div class="error-messages">
+          <h2>以下のエラーがあります:</h2>
+          <ul>
+            <% @order.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+        <!-- Address Fields -->
+        <%= f.fields_for :address do |address_field| %>
+          <%= render 'address_fields', f: f %>
+        <% end %>
+
+
+        <!-- Order Items Fields -->
+      <h3>注文する商品</h3>
+      <%= f.fields_for :order_items do |order_item_field| %>
+        <div class="form-group">
+          <%= order_item_field.label :item_id, "商品" %>
+          <%= order_item_field.collection_select :item_id, Item.all, :id, :name, prompt: "商品を選択" %>
+        </div>
+        <div class="form-group">
+          <%= order_item_field.label :quantity, "数量" %>
+          <%= order_item_field.number_field :quantity, min: 1 %>
+        </div>
+      <% end %>
+
       <div class="form-group">
         <%= f.submit '注文を確定する', class: 'btn btn-primary' %>
       </div>
+
     <% end %>
   </main>
-  </body>
+</body>
 </html>
