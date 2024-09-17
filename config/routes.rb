@@ -39,9 +39,9 @@ Rails.application.routes.draw do
   # カートアイテム
   resources :cart_items, only: [:create, :update, :destroy]
 
-  # 注文関連
+  # 注文関連 (ユーザー向け)
   resources :orders, only: [:index, :new, :create] do
-    collection do
+    member do
       get 'complete'
     end
   end
