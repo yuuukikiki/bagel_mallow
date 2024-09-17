@@ -17,34 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // // カートに追加する
-  // document.querySelector('form').addEventListener('submit', (event) => {
-  //   event.preventDefault(); // フォームのデフォルト送信を防ぐ
-
-  //   const form = event.target;
-  //   const formData = new FormData(form);
-
-  //   fetch(form.action, {
-  //     method: form.method,
-  //     headers: {
-  //       'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-  //     },
-  //     body: formData
-  //   })
-  //   .then(response => {
-  //     if (response.ok) {
-  //       return response.json(); // 必要に応じてレスポンスを処理
-  //     } else {
-  //       throw new Error('Network response was not ok.');
-  //     }
-  //   })
-  //   .then(data => {
-  //     alert('カートに追加されました');
-  //     // 必要に応じてUIの更新を行う
-  //   })
-  //   .catch(error => console.error('Error:', error));
-  // });
-
   // カートに追加する
   document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', (event) => {
@@ -77,4 +49,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 });
-
