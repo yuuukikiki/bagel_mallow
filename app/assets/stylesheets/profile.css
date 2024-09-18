@@ -1,0 +1,54 @@
+.mypage-container {
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.mypage-header {
+  background-color: #61cddd;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+.mypage-main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.mypage-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #65abc8;
+  color: #fff;
+}
+
+.mypage-header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.mypage-main p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.mypage-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+.mypage-link:hover {
+  background-color: #555;
+}
