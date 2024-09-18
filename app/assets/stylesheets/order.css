@@ -377,3 +377,86 @@
   .cart-actions a:hover {
     background-color: #0056b3;
   }
+
+
+      /* =======================  /* 注文フォームページ=============================================
+
+      /* =======================
+       注文ページの詳細情報スタイル
+     ======================= */
+
+     .order-page {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .order-page h2, .order-page h3 {
+      text-align: center;
+      color: #333;
+    }
+
+    .order-page ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .order-page li {
+      margin-bottom: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .order-page li:last-child {
+      border-bottom: none;
+    }
+
+    .order-page .form-group {
+      margin-bottom: 20px;
+    }
+
+    .order-page label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .order-page input, .order-page select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .order-page .btn-primary {
+      display: inline-block;
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .order-page .btn-primary:hover {
+      background-color: #2980b9;
+    }
+
+    .order-page .error-messages {
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    .order-page #card-element {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      margin-bottom: 20px;
+    }

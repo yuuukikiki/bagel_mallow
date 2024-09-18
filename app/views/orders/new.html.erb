@@ -3,39 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>注文 - Bagel Mallow</title>
+  <title>注文 - Mallow</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <!-- PAY.JPのJavaScriptを追加 -->
+  <script src="https://js.pay.jp/v2/pay.js"></script>
 </head>
+
 <body>
   <header>
-    <h1><a href="/">Bagel Mallow</a></h1>
+    <h1><a href="/">Mallow</a></h1>
   </header>
 
-  <main>
+  <main class="order-page">
     <h2>注文フォーム</h2>
 
-    <%= form_with model: @order, url: orders_path, local: true do |f| %>
+ <!-- カート内の商品表示 -->
+    <h3>注文内容</h3>
+    <ul>
+      <% @cart_items.each do |cart_item| %>
+        <li>
+          <%= cart_item.item.name %> - 数量: <%= cart_item.quantity %>
+          <p>価格: <%= number_to_currency(cart_item.item.price * cart_item.quantity) %></p>
+        </li>
+      <% end %>
+    </ul>
 
+    <!-- 合計金額の表示 -->
+    <div class="form-group">
+      <label>合計金額:</label>
+      <p><%= number_to_currency(@total_amount) %></p>
+    </div>
+
+   <!-- 注文フォーム -->
+<%= form_with model: @order, url: orders_path, method: :post, id: 'payment-form', local: true do |f| %>
+     <!-- エラーメッセージの表示 -->
       <% if @order.errors.any? %>
         <div class="error-messages">
-            <h2>以下のエラーがあります:</h2>
-            <ul>
-              <% @order.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
-
-      <%= f.fields_for :address do |address_field| %>
-        <%= render 'address_fields', f: f %>
-      <% end %>
-
-
-      <% if @order.errors.any? %>
-        <div class="error-messages">
-          <h2>以下のエラーがあります:</h2>
+                <h2>以下のエラーがあります:</h2>
           <ul>
             <% @order.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
@@ -44,30 +49,22 @@
         </div>
       <% end %>
 
-        <!-- Address Fields -->
-        <%= f.fields_for :address do |address_field| %>
+       <!-- 住所入力欄 -->
+        <%= f.fields_for :address do |address_form| %>
           <%= render 'address_fields', f: f %>
-        <% end %>
-
-
-        <!-- Order Items Fields -->
-      <h3>注文する商品</h3>
-      <%= f.fields_for :order_items do |order_item_field| %>
-        <div class="form-group">
-          <%= order_item_field.label :item_id, "商品" %>
-          <%= order_item_field.collection_select :item_id, Item.all, :id, :name, prompt: "商品を選択" %>
-        </div>
-        <div class="form-group">
-          <%= order_item_field.label :quantity, "数量" %>
-          <%= order_item_field.number_field :quantity, min: 1 %>
-        </div>
       <% end %>
+
+       <!-- クレジットカード情報入力欄 -->
+      <h3>クレジットカード情報</h3>
+      <div id="card-element"></div>
+      <input type="hidden" name="payjp_token" id="payjp_token">
 
       <div class="form-group">
         <%= f.submit '注文を確定する', class: 'btn btn-primary' %>
       </div>
-
     <% end %>
   </main>
+
+  <!-- StimulusコントローラでJavaScript制御 -->
 </body>
 </html>
