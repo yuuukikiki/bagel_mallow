@@ -8,11 +8,10 @@ ja:
       greater_than: "は0より大きい数値でなければなりません"
       greater_than_or_equal_to: "は1以上の整数でなければなりません"
       email_invalid: "は無効なメールアドレスです"
-      prefecture: "を選択してください"
+      prefecture_id: "を選択してください"
       postal_code_invalid: "は無効です。ハイフン(-)を含めてください"
       not_saved: "保存できませんでした"
       password_invalid: "は英字と数字を含む必要があります"
-
 
     activerecord:
       errors:
@@ -22,42 +21,15 @@ ja:
             other: "%{model}の保存中に%{count}件のエラーが発生しました"
           body: "次の項目を確認してください"
 
-  activerecord:
-    attributes:
-      address:
-        postal_code: "郵便番号"
-        prefecture_id: "都道府県"
-        city: "市区町村"
-        street: "番地"
-        building_name: "建物名"
-        phone_number: "電話番号"
-        user: "ユーザーの住所"
-
-
-      total_amount_blank: "合計金額は必須です"
-      total_amount_greater_than: "合計金額は0より大きい数値でなければなりません"
-    activerecord:
-      errors:
-        models:
-          user:
-            attributes:
-              user: "ユーザー"
-              total_amount:
-                blank: "合計金額は必須です"
-                greater_than: "合計金額は0より大きい数値でなければなりません"
-          address:
-            attributes:
-              postal_code: "郵便番号"
-              prefecture: "都道府県"
-              user: "ユーザー"
-          order:
-            attributes:
-              total_amount: "合計金額"
-      template:
-        header:
-          one: "%{model}の保存中に1つのエラーが発生しました"
-          other: "%{model}の保存中に%{count}件のエラーが発生しました"
-        body: "次の項目を確認してください"
+      models:
+        address:
+          attributes:
+            postal_code: "郵便番号"
+            prefecture_id: "都道府県"
+            city: "市区町村"
+            street: "番地"
+            building_name: "建物名"
+            phone_number: "電話番号"
 
   devise:
     sessions:
