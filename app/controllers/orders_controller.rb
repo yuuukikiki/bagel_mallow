@@ -11,9 +11,17 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.build_address
 
-    # Calculate total amount from cart items
-    @total_amount = current_user.cart.cart_items.sum { |cart_item| cart_item.item.price * cart_item.quantity }
+    # 現在のユーザーのカートを取得
+    @cart = current_user.cart
+    if @cart.present?
+      @cart_items = @cart.cart_items.includes(:item) # カート内の商品を取得
+      @total_amount = @cart_items.sum { |cart_item| cart_item.item.price * cart_item.quantity } # 合計金額を計算
+    else
+      @cart_items = [] # カートが空の場合は空の配列をセット
+      @total_amount = 0
+    end
 
+    # 過去の注文情報を使って住所を自動入力
     return unless current_user.orders.any?
 
     last_order = current_user.orders.order(created_at: :desc).first
@@ -26,13 +34,12 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
-    @cart = current_user.cart
-    @total_amount = @cart.cart_items.sum { |item| item.quantity * item.item.price }
 
-    @order.total_amount = @total_amount
+    # newアクションで計算された合計金額を使用
+    @order.total_amount = params[:total_amount].to_f
 
     if @order.save
-      redirect_to complete_orders_path(@order), notice: '注文が完了しました'
+      redirect_to complete_order_path(@order), notice: '注文が完了しました'
     else
       render :new
     end
