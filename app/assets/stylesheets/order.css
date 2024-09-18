@@ -1,0 +1,379 @@
+ /* =======================  /* メニューページ=======================
+
+ /* =======================
+     カート内の画像サイズ調整
+     ======================= */
+     .cart-item-image {
+      max-width: 100px;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* カートテーブル */
+    #cart {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #cart th, #cart td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    #cart th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    /* =======================
+       メニュー背景スタイル
+       ======================= */
+       .pat {
+        background-image: repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 10px,
+            rgb(125, 227, 222) 10px,
+            rgb(87, 184, 199)30px
+          ),
+          repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgb(25, 236, 247) 10px,
+            rgb(132, 225, 225)30px
+          );
+        background-color: #fff;
+        padding: 20px;
+  }
+
+    /* =======================
+       メニューリストのスタイル
+       ======================= */
+
+       main {
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+    .menu-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 2列で自動調整 */
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-item img {
+      width: 150px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 10px;
+    }
+
+    .item-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .item-details h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .item-details p {
+      margin: 5px 0;
+    }
+
+    .price {
+      font-weight: bold;
+    }
+
+      /* =======================
+       数量コントロール
+       ======================= */
+       .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .quantity-controls button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        width: 30px; /* サイズ調整 */
+        height: 30px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .quantity-controls button:hover {
+        background-color: #371919;
+      }
+
+      .quantity-controls button:active {
+        background-color: #8fa8b5;
+      }
+
+      .quantity-field {
+        width: 50px; /* サイズ調整 */
+        height: 30px;
+        text-align: center;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      /* =======================
+           カートに追加ボタン
+           ======================= */
+      .add-to-cart {
+        background-color: #34b8d0;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px; /* サイズ調整 */
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+        display: block;
+        width: 100%;
+      }
+
+      .add-to-cart:hover {
+        background-color: #0056b3;
+      }
+
+      .add-to-cart:active {
+        background-color: #004085; /* クリック時の色 */
+      }
+
+     /* =======================
+       購入手続きボタンのスタイル
+       ======================= */
+      .purchase-button {
+        display: block;
+        background-color: #58acd0;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        overflow: hidden;
+        transition: background-color 0.3s;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .purchase-button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300%;
+        height: 300%;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.6s;
+      }
+
+      .purchase-button:focus::after,
+      .purchase-button:hover::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .purchase-button:hover {
+        background-color: #2c88af;
+      }
+
+    /* =======================
+       カートアイコン
+       ======================= */
+    .cart-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      text-align: center;
+      background-color: #f8f9fa;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .cart-icon a {
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .cart-icon img {
+      width: 60px;
+      height: auto;
+      border-radius: 50%;
+    }
+
+    .cart-icon span {
+      display: block;
+      margin-top: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .cart-icon:hover {
+      background-color: #e2e6ea;
+    }
+
+
+    /* =======================  /* カートの中身ページ=======================
+
+
+    /* =======================
+     カートアイテムのリスト表示
+   ======================= */
+
+    .cart-header {
+      background-color: #a8d5ba; /* くすんだミントブルーの色 */
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px; /* 角を少し丸くするためのスタイル */
+    }
+
+    .cart-header h1 {
+      color: #ffffff; /* テキストの色を白にする */
+      font-size: 2rem; /* フォントサイズを大きめに */
+    }
+
+   .cart-items-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* =======================
+       カートアイテムのスタイル
+     ======================= */
+  .cart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  /* =======================
+       商品画像のスタイル
+     ======================= */
+  .cart-item-image {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* =======================
+       アイテムの詳細情報スタイル
+     ======================= */
+  .item-details h3 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  .item-details .price {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  /* 数量コントロール */
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .quantity-controls button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .quantity-controls .quantity-field {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  /* カートアクションボタン */
+  .cart-actions a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+  }
+
+  .cart-actions a:hover {
+    background-color: #0056b3;
+  }

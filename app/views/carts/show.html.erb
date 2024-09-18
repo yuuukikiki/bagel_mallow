@@ -7,13 +7,13 @@
 </head>
 
 <body>
-  <header>
+  <header class="cart-header">
     <h1>カートの中身</h1>
   </header>
 
-  <main>
+  <main class="cart-main">
     <!-- カートアイテムの一覧表示 -->
-    <table id="cart">
+    <table id="cart" class="cart-table">
       <% if @cart.cart_items.any? %>
         <thead>
           <tr>
@@ -34,10 +34,10 @@
     </table>
 
     <!-- 購入手続きへのリンク -->
-    <%= link_to 'ショッピングを続ける', orders_path %>
-
-    <%= link_to '購入手続きへ進む', new_order_path %>
-
+    <div class="cart-actions">
+      <%= link_to 'ショッピングを続ける', orders_path, class: 'continue-shopping' %>
+      <%= link_to '購入手続きへ進む', new_order_path, class: 'proceed-to-checkout' %>
+    </div>
   </main>
 
   <footer>

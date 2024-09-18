@@ -6,19 +6,19 @@
   <link rel="stylesheet" href="<%= asset_path('application.css') %>">
 </head>
 
-<body>
-  <header>
+<body class="mypage-container">
+  <header class="mypage-header">
     <h1>マイページ</h1>
   </header>
 
-  <main>
+  <main class="mypage-main">
     <p>名前: <%= @user.name %></p>
     <p>メール: <%= @user.email %></p>
     <p>電話番号: <%= @user.phone_number %></p>
-    <%= link_to '注文履歴', order_history_profile_path %>
+    <%= link_to '注文履歴', order_history_profile_path, class: 'mypage-link' %>
   </main>
 
-  <footer>
+  <footer class="mypage-footer">
     <p>©2024 Bagel Mallow. All Rights Reserved.</p>
   </footer>
 </body>

@@ -4,7 +4,7 @@
    html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Zen Maru Gothic', sans-serif; /* フォントを一貫して設定 */
+    font-family: 'Zen Maru Gothic', sans-serif;
     color: #333;
     background-color: #f4f4f4;
     height: 100%;
@@ -31,9 +31,9 @@
      ヘッダー設定
      ======================= */
   header {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
+    background-color: #f4f4e2;
+    padding: 10px 0;
+    text-align: center;
   }
 
   .header-inner {
@@ -42,7 +42,7 @@
     justify-content: space-between;
     padding: 10px;
     max-width: 1200px;
-    margin: 0 auto; /* ヘッダーを中央寄せ */
+    margin: 0 auto;
   }
 
   .site-logo img {
@@ -65,33 +65,56 @@
   /* =======================
      ナビゲーション設定
      ======================= */
-  nav {
-    display: flex; /* 横並びに設定 */
-  }
+     .main-nav {
+      display: flex;
+      justify-content: flex-start; /* ナビゲーション全体を左寄せ */
+      align-items: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-  .main-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
+    .main-nav li {
+      margin: 0 20px;
+    }
 
-  .main-nav li {
-    margin-right: 20px;
-  }
+    .main-nav li a {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 18px;
+      color: #5db792; /* 文字色を完全な白に設定 */
+      text-decoration: none;
+      letter-spacing: 0em; /* 文字間を詰める */
+      line-height: 1.5; /* テキストの高さや行間はそのまま */
+      font-weight: 700;
+      position: relative;
+      padding: 10px 10px; /* 左右のパディングを最小限に */
+      display: block;
+      background-color: #f4f4e2; /* ベージュの背景色 */
+      text-align: left; /* テキストを左寄せに配置 */
+    }
 
-  .main-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    padding: 10px 15px;
-  }
+    .main-nav li a::before {
+      content: "";
+      position: absolute;
+      top: 50%; /* 背景画像を中央に配置 */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px; /* 画像の横幅を指定 */
+      height: 70px; /* 画像の高さを指定 */
+      background-image: url('/assets/seal.png'); /* 背景画像を指定 */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: -1; /* 背景画像を文字の後ろに配置 */
+      opacity: 0.8; /* 背景画像の透明度 */
+    }
 
-  .main-nav a.active {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
-  }
+    .main-nav li a:hover {
+      color: #541d1d; /* ホバー時に柔らかい白に変更 */
+      transform: scale(1.05); /* 拡大効果 */
+      transition: transform 0.3s ease;
+    }
+
 
   /* =======================
      ユーザーリンク
@@ -110,34 +133,6 @@
 
   .login:hover, .sign-up:hover {
     text-decoration: underline;
-  }
-
-  /* =======================
-     トップ情報エリア
-     ======================= */
-  .welcome-info {
-    background-color: #fff;
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .top-info {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border: none;
-  }
-
-  .responsive-map {
-    width: 100%;
-    height: 450px;
-    border: 0;
-  }
-
-  @media (max-width: 768px) {
-    .responsive-map {
-      height: 300px;
-    }
   }
 
   /* =======================
@@ -216,7 +211,7 @@
      フッター設定
      ======================= */
   footer {
-    background-color: #fff;
+    background-color:  #f4f4e2;
     border-top: 1px solid #ddd;
     padding: 20px;
   }
@@ -237,95 +232,68 @@
     text-decoration: underline;
   }
 
+
   /* =======================
-     カート内の画像サイズ調整
-     ======================= */
-  .cart-item-image {
-    max-width: 100px;
-    height: auto;
-    object-fit: cover;
-  }
-
-  /* カートテーブル */
-  #cart {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  #cart th, #cart td {
-    border: 1px solid #ddd;
-    padding: 8px;
+   ウェルカム情報セクションのスタイル
+   ======================= */
+   .welcome-info {
+    background-color: #f4f4e2;
+    padding: 20px;
+    border-radius: 8px;
     text-align: center;
+
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInZoomIn 1s ease-out forwards;
   }
 
-  #cart th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+  @keyframes fadeInZoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
-  /* =======================
-     メニューリストのスタイル
-     ======================= */
-  .menu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+/* =======================
+   mallowロゴ画像のスタイル
+   ======================= */
 
-  .menu-item {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-  }
-
-  .menu-item img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 15px;
-  }
-
-  .item-details h3 {
-    font-size: 18px;
-    margin: 0;
-  }
-
-  .item-details p {
-    margin: 5px 0;
-  }
-
-  .price {
-    font-weight: bold;
-  }
-
-  /* =======================
-     カートアイコン
-     ======================= */
-  .cart-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    text-align: center;
-  }
-
-  .cart-icon a {
+   a img {
+    border-radius: 50px;
     display: block;
-    text-decoration: none;
-    color: #333;
-  }
-
-  .cart-icon img {
-    width: 80px;
+    max-width: 100%;
     height: auto;
-    border-radius: 50%;
+    opacity: 0; /* 初期状態では透明 */
+    transform: translateY(-30px); /* 少し上に位置 */
+    animation: logoFadeIn 1s ease-out forwards; /* 1秒かけてアニメーション */
   }
 
-  .cart-icon span {
-    display: block;
-    margin-top: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: underline;
+  /* ロゴのフェードイン＋スライドダウンのアニメーション */
+@keyframes logoFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0); /* 元の位置に戻る */
   }
+}
+
+
+/* =======================
+   Google mapのスタイル
+   ======================= */
+
+.top-info {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.responsive-map {
+  width: 100%;
+  height: 450px; /* お好みで調整可能 */
+  border: 0;
+}
