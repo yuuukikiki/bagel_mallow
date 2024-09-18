@@ -1,68 +1,36 @@
-<%= form_with model: @order, url: orders_path, method: :post do |f| %>
-  <div class="form-group">
-    <%= f.label :total_amount, '合計金額:' %>
-    <%= f.text_field :total_amount, value: @total_amount, readonly: true %>
-  </div>
-<% end %>
+<%= form_with model: @order, url: orders_path, method: :post, id: 'payment-form', local: true do |f| %>
 
-<%= f.fields_for :address do |address_form| %>
+  <!-- 合計金額の表示 -->
   <div class="form-group">
-    <%= address_form.label :postal_code, '郵便番号:' %>
-    <%= address_form.text_field :postal_code, required: true %>
-    <% if address_form.object.errors[:postal_code].any? %>
-      <div class="error-message">
-        <%= address_form.object.errors[:postal_code].join(", ") %>
-      </div>
-    <% end %>
+    <%= label_tag :total_amount, '合計金額:' %>
+    <%= text_field_tag :total_amount, @total_amount, readonly: true %>
   </div>
 
-  <div class="form-group">
-    <%= address_form.label :prefecture_id, '都道府県:' %>
-    <%= address_form.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: '都道府県を選択してください', required: true %>
-    <% if address_form.object.errors[:prefecture_id].any? %>
-      <div class="error-message">
-        <%= address_form.object.errors[:prefecture_id].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= address_form.label :city, '市区町村:' %>
-    <%= address_form.text_field :city, required: true %>
-    <% if address_form.object.errors[:city].any? %>
-      <div class="error-message">
-        <%= address_form.object.errors[:city].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= address_form.label :street, '番地:' %>
-    <%= address_form.text_field :street, required: true %>
-    <% if address_form.object.errors[:street].any? %>
-      <div class="error-message">
-        <%= address_form.object.errors[:street].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= address_form.label :building_name, '建物名（任意）:' %>
-    <%= address_form.text_field :building_name %>
-    <% if address_form.object.errors[:building_name].any? %>
-      <div class="error-message">
-        <%= address_form.object.errors[:building_name].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= address_form.label :phone_number, '電話番号:' %>
-    <%= address_form.text_field :phone_number, required: true %>
-    <% if address_form.object.errors[:phone_number].any? %>
-      <div class="error-message">
-        <%= address_form.object.errors[:phone_number].join(", ") %>
-      </div>
-    <% end %>
-  </div>
+  <!-- 住所入力欄 -->
+  <%= f.fields_for :address do |address_form| %>
+    <div class="form-group">
+      <%= address_form.label :postal_code, '郵便番号:' %>
+      <%= address_form.text_field :postal_code, required: true %>
+    </div>
+    <div class="form-group">
+      <%= address_form.label :prefecture_id, '都道府県:' %>
+      <%= address_form.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: '都道府県を選択してください', required: true %>
+    </div>
+    <div class="form-group">
+      <%= address_form.label :city, '市区町村:' %>
+      <%= address_form.text_field :city, required: true %>
+    </div>
+    <div class="form-group">
+      <%= address_form.label :street, '番地:' %>
+      <%= address_form.text_field :street, required: true %>
+    </div>
+    <div class="form-group">
+      <%= address_form.label :building_name, '建物名（任意）:' %>
+      <%= address_form.text_field :building_name %>
+    </div>
+    <div class="form-group">
+      <%= address_form.label :phone_number, '電話番号:' %>
+      <%= address_form.text_field :phone_number, required: true %>
+    </div>
+  <% end %>
 <% end %>
