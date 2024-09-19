@@ -33,30 +33,27 @@ class OrdersController < ApplicationController
   end
 
   def create
+
     @order = current_user.orders.build(order_params)
     @cart = current_user.cart
     @cart_items = @cart.cart_items.includes(:item) if @cart # ここでカートアイテムを再設定
     @total_amount = @cart_items.sum { |item| item.quantity * item.item.price } if @cart_items.present?
-
+    @order = Order.new(order_params)
     @order.total_amount = @total_amount
 
     if @order.save
       # カートの中身を空にするなどの処理を追加する場合も
       redirect_to complete_orders_path(@order), notice: '注文が完了しました'
     else
-      render :new
+      render 'new', status: :unprocessable_entity
     end
-  end
-
-  def complete
-    @order = Order.find(params[:id])
   end
 
   private
 
   def order_params
     params.require(:order).permit(
-      address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number],
+        address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number],
       order_items_attributes: [:item_id, :quantity]
     )
   end

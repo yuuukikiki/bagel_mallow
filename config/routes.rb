@@ -55,5 +55,6 @@ Rails.application.routes.draw do
     resources :users
 
     # サイト設定管理
+    resource :settings, only: [:edit, :update]
   end
 end
