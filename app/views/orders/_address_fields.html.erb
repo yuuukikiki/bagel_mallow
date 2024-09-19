@@ -1,16 +1,7 @@
-<%= form_with model: @order, url: orders_path, method: :post, id: 'payment-form', local: true do |f| %>
-
-  <!-- 合計金額の表示 -->
+<%= f.fields_for :address do |address_form| %>
   <div class="form-group">
-    <%= label_tag :total_amount, '合計金額:' %>
-    <%= text_field_tag :total_amount, @total_amount, readonly: true %>
-  </div>
-
-  <!-- 住所入力欄 -->
-  <%= f.fields_for :address do |address_form| %>
-    <div class="form-group">
-      <%= address_form.label :postal_code, '郵便番号:' %>
-      <%= address_form.text_field :postal_code, required: true %>
+    <%= address_form.label :postal_code, '郵便番号:' %>
+    <%= address_form.text_field :postal_code, required: true %>
     </div>
     <div class="form-group">
       <%= address_form.label :prefecture_id, '都道府県:' %>
@@ -32,5 +23,4 @@
       <%= address_form.label :phone_number, '電話番号:' %>
       <%= address_form.text_field :phone_number, required: true %>
     </div>
-  <% end %>
 <% end %>

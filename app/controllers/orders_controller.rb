@@ -34,12 +34,15 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
+    @cart = current_user.cart
+    @cart_items = @cart.cart_items.includes(:item) if @cart # ここでカートアイテムを再設定
+    @total_amount = @cart_items.sum { |item| item.quantity * item.item.price } if @cart_items.present?
 
-    # newアクションで計算された合計金額を使用
-    @order.total_amount = params[:total_amount].to_f
+    @order.total_amount = @total_amount
 
     if @order.save
-      redirect_to complete_order_path(@order), notice: '注文が完了しました'
+      # カートの中身を空にするなどの処理を追加する場合も
+      redirect_to complete_orders_path(@order), notice: '注文が完了しました'
     else
       render :new
     end
