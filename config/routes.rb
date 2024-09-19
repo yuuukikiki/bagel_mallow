@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :update, :destroy]
 
   # 注文関連 (ユーザー向け)
-  resources :orders, only: [:index, :new, :create] do
+  resources :orders do
     member do
       get 'complete'
     end

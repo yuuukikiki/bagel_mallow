@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>注文 - Mallow</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <!-- PAY.JPのJavaScriptを追加 -->
-  <script src="https://js.pay.jp/v2/pay.js"></script>
 </head>
 
 <body>
@@ -18,14 +15,18 @@
   <main class="order-page">
     <h2>注文フォーム</h2>
 
- <!-- カート内の商品表示 -->
+    <!-- カート内の商品表示 -->
     <h3>注文内容</h3>
     <ul>
-      <% @cart_items.each do |cart_item| %>
-        <li>
-          <%= cart_item.item.name %> - 数量: <%= cart_item.quantity %>
-          <p>価格: <%= number_to_currency(cart_item.item.price * cart_item.quantity) %></p>
-        </li>
+      <% if @cart_items.present? %>
+        <% @cart_items.each do |cart_item| %>
+          <li>
+            <%= cart_item.item.name %> - 数量: <%= cart_item.quantity %>
+            <p>価格: <%= number_to_currency(cart_item.item.price * cart_item.quantity) %></p>
+          </li>
+        <% end %>
+      <% else %>
+        <p>カートに商品がありません。</p>
       <% end %>
     </ul>
 
@@ -37,10 +38,11 @@
 
    <!-- 注文フォーム -->
 <%= form_with model: @order, url: orders_path, method: :post, id: 'payment-form', local: true do |f| %>
+
      <!-- エラーメッセージの表示 -->
       <% if @order.errors.any? %>
         <div class="error-messages">
-                <h2>以下のエラーがあります:</h2>
+          <h2>以下のエラーがあります:</h2>
           <ul>
             <% @order.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
@@ -50,9 +52,7 @@
       <% end %>
 
        <!-- 住所入力欄 -->
-        <%= f.fields_for :address do |address_form| %>
           <%= render 'address_fields', f: f %>
-      <% end %>
 
        <!-- クレジットカード情報入力欄 -->
       <h3>クレジットカード情報</h3>

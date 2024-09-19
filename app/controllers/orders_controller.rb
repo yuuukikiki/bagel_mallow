@@ -33,22 +33,17 @@ class OrdersController < ApplicationController
   end
 
   def create
+
+    @order = current_user.orders.build(order_params)
+    @cart = current_user.cart
+    @cart_items = @cart.cart_items.includes(:item) if @cart # ここでカートアイテムを再設定
+    @total_amount = @cart_items.sum { |item| item.quantity * item.item.price } if @cart_items.present?
     @order = Order.new(order_params)
+    @order.total_amount = @total_amount
 
-    if @order.valid?
-      # PAY.JPのAPIキーをセット
-      Payjp.api_key = 'sk_test_21e93a33367464941ff66034' # 自分のPAY.JPテスト秘密鍵を設定
-
-      # PAY.JPで決済処理を実行
-      Payjp::Charge.create(
-        amount: order_params[:price],  # 商品の値段
-        card: order_params[:token],    # フロントエンドで生成されたトークン
-        currency: 'jpy'                # 日本円
-      )
-
-      # 注文を保存
-      @order.save
-      redirect_to root_path, notice: '注文が完了しました'
+    if @order.save
+      # カートの中身を空にするなどの処理を追加する場合も
+      redirect_to complete_orders_path(@order), notice: '注文が完了しました'
     else
       render 'new', status: :unprocessable_entity
     end
@@ -58,9 +53,8 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      :price, # カート内の商品合計金額
-      address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number],
+        address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number],
       order_items_attributes: [:item_id, :quantity]
-    ).merge(token: params[:token]) # フロントエンドから送信されたトークンをマージ
+    )
   end
 end
