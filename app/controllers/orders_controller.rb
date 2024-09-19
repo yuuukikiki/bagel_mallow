@@ -35,13 +35,13 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build(order_params)
     @cart = current_user.cart
-    @cart_items = @cart.cart_items.includes(:item) if @cart # ここでカートアイテムを再設定
+    @cart_items = @cart.cart_items.includes(:item) if @cart
     @total_amount = @cart_items.sum { |item| item.quantity * item.item.price } if @cart_items.present?
 
     @order.total_amount = @total_amount
 
-    if @order.save
-      # カートの中身を空にするなどの処理を追加する場合も
+    # addressの保存が行われているか確認
+    if @order.address.present? && @order.save
       redirect_to complete_orders_path(@order), notice: '注文が完了しました'
     else
       render :new
@@ -56,8 +56,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number],
-      order_items_attributes: [:item_id, :quantity]
+      address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number]
     )
   end
 end
