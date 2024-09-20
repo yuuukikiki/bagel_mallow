@@ -39,11 +39,13 @@ class OrdersController < ApplicationController
     @total_amount = @cart_items.sum { |item| item.quantity * item.item.price } if @cart_items.present?
 
     @order.total_amount = @total_amount
+    @order.address.user = current_user if @order.address.present?
 
     # addressの保存が行われているか確認
     if @order.address.present? && @order.save
       redirect_to complete_orders_path(@order), notice: '注文が完了しました'
     else
+      Rails.logger.info @order.address.errors.full_messages # ここでエラーメッセージを確認
       render :new
     end
   end

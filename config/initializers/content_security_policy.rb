@@ -15,7 +15,7 @@ Rails.application.configure do
     policy.object_src  :none
 
     # スクリプトの読み込みを許可（PAY.JPのスクリプトも含む）
-    policy.script_src  :self, :https, 'https://js.pay.jp', "'unsafe-inline'"
+    policy.script_src  :self, :https, 'https://js.pay.jp'
 
     # スタイルシートの読み込みを許可し、インラインスタイルを許可
     policy.style_src   :self, :https, 'https://fonts.googleapis.com', "'unsafe-inline'"
