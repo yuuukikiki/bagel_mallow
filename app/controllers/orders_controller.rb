@@ -33,11 +33,12 @@ class OrdersController < ApplicationController
   end
 
   def create
+
     @order = current_user.orders.build(order_params)
     @cart = current_user.cart
     @cart_items = @cart.cart_items.includes(:item) if @cart
     @total_amount = @cart_items.sum { |item| item.quantity * item.item.price } if @cart_items.present?
-
+    @order = Order.new(order_params)
     @order.total_amount = @total_amount
     @order.address.user = current_user if @order.address.present?
 
@@ -47,11 +48,8 @@ class OrdersController < ApplicationController
     else
       Rails.logger.info @order.address.errors.full_messages # ここでエラーメッセージを確認
       render :new
+      render 'new', status: :unprocessable_entity
     end
-  end
-
-  def complete
-    @order = Order.find(params[:id])
   end
 
   private
