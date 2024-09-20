@@ -5,7 +5,7 @@ lock '3.19.1'
 set :application, 'bagel_mallow'
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url,  'git@github.com:Githubのyuuukikiki/bagel_mallow'
+set :repo_url, 'git@github.com:yuuukikiki/bagel_mallow'
 set :branch, 'main'
 
 # バージョンが変わっても共通で参照するディレクトリを指定
