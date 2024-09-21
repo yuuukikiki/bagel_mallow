@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one :cart
   has_many :orders
-  has_many :addresses, through: :orders
+  has_many :addresses
 
   validates :name, presence: { message: I18n.t('errors.messages.blank') }
   validates :phone_number,
