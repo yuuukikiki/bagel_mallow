@@ -33,7 +33,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-
     @order = current_user.orders.build(order_params)
     @cart = current_user.cart
     @cart_items = @cart.cart_items.includes(:item) if @cart
@@ -47,7 +46,6 @@ class OrdersController < ApplicationController
       redirect_to complete_orders_path(@order), notice: '注文が完了しました'
     else
       Rails.logger.info @order.address.errors.full_messages # ここでエラーメッセージを確認
-      render :new
       render 'new', status: :unprocessable_entity
     end
   end
@@ -56,7 +54,8 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      address_attributes: [:postal_code, :prefecture_id, :city, :street, :building_name, :phone_number]
+      address_attributes: %i[user_id postal_code prefecture_id city street building_name phone_number],
+      order_items_attributes: %i[item_id quantity]
     )
   end
 end
