@@ -27,26 +27,15 @@
     }
 
     /* =======================
-       メニュー背景スタイル
+       メニュー背景
        ======================= */
        .pat {
-        background-image: repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 10px,
-            rgb(125, 227, 222) 10px,
-            rgb(87, 184, 199)30px
-          ),
-          repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            rgb(25, 236, 247) 10px,
-            rgb(132, 225, 225)30px
-          );
-        background-color: #fff;
-        padding: 20px;
-  }
+        background-color: #d8ba6f;
+        min-height: 100vh; /* ページ全体に背景を適用 */
+        padding: 20px 0; /* 上下に少し余白を持たせる */
+        margin: 0; /* 余白をなくす */
+        box-sizing: border-box; /* パディング込みで背景が適用されるようにする */
+      }
 
     /* =======================
        メニューリストのスタイル

@@ -1,0 +1,82 @@
+/* ログインページの全体スタイル */
+.login-form-wrapper {
+  background: linear-gradient(120deg, #FFDEE9, #B5FFFC, #FBD3E9); /* パステルカラーのグラデーション */
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  min-height: 100vh; /* 背景を画面全体に適用 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* グラデーションがなめらかに変化するアニメーション */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ログインフォームの外側にタイトルを含むラッパーを追加 */
+.login-form-wrapper {
+  display: flex;
+  flex-direction: column; /* ログインタイトルとフォームを縦に並べる */
+  align-items: center; /* 中央揃え */
+}
+
+/* ログインフォーム */
+.login-form {
+  background-color: #FFFFFF;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  z-index: 1;
+  margin-top: 10px; /* タイトルとの間に少し余白をつける */
+}
+
+/* ログインタイトル */
+.login-title {
+  font-size: 35px;
+  text-align: center;
+  color: #4A90E2;
+  margin-bottom: 0;
+  margin-top: 0; /* 上部の余白を削除 */
+  padding-top: 0; /* 上部のパディングも削除 */
+  margin-bottom: 50px;
+}
+
+/* 入力フィールドのスタイル */
+.form-input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #4A90E2;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+/* ログインボタン */
+.login-button {
+  background-color: #A6C8FF;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.login-button:hover {
+  background-color: #82B0FF;
+}

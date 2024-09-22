@@ -1,39 +1,39 @@
-<h2>新規登録</h2>
+<div class="register-page">
+ <h2 class="register-title">新規登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+ <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "register-form" }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name, "名前" %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :name, "名前", class: "form-label" %><br />
+    <%= f.text_field :name, autofocus: true, class: "form-input" %>
   </div>
 
   <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, "メールアドレス", class: "form-label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
   </div>
 
   <div class="field">
-    <%= f.label :phone_number, "電話番号" %><br />
-    <%= f.telephone_field :phone_number, autocomplete: "phone" %>
+    <%= f.label :phone_number, "電話番号", class: "form-label" %><br />
+    <%= f.telephone_field :phone_number, autocomplete: "phone", class: "form-input" %>
   </div>
 
   <div class="field">
-    <%= f.label :password, "パスワード" %>
+    <%= f.label :password, "パスワード", class: "form-label" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
+    <em class="password-hint">(<%= @minimum_password_length %>文字以上)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "パスワード確認" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, "パスワード確認", class: "form-label" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "登録" %>
+    <%= f.submit "登録", class: "submit-button" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+</div>

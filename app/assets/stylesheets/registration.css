@@ -1,0 +1,129 @@
+/* 背景 */
+html, body, .register-page {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.register-page {
+  background: linear-gradient(120deg, #FFDEE9, #B5FFFC, #FBD3E9); /* パステルカラーのグラデーション */
+  background-size: 400% 400%; /* アニメーションのために背景サイズを大きく設定 */
+  animation: gradientAnimation 10s ease infinite; /* グラデーションアニメーションを適用 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* フォームとフッターの隙間を詰める */
+  min-height: 100vh; /* ページ全体の高さをビュー全体に合わせる */
+  padding: 0;
+  margin: 0;
+}
+
+/* グラデーションがなめらかに変化するアニメーション */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes dotsMove {
+  0% {
+    background-position: 0 0, 25px 25px;
+  }
+  100% {
+    background-position: 50px 50px, 0 0;
+  }
+}
+
+/* 新規登録フォーム */
+.register-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  color: rgb(225, 175, 232); /* 白い文字 */
+  text-align: center;
+  padding: 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.register-form {
+  position: relative;
+  z-index: 1; /* 背景の上に表示 */
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を透過させる */
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%; /* 横幅を100%に設定 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 影をつけてフォームを浮かせる */
+  margin: 0 auto; /* フォームを中央に配置 */
+  margin-bottom: 30px; /* 下に30pxの余白を追加 */
+  flex-grow: 0; /* 高さが伸びすぎないように調整 */
+  box-sizing: border-box; /* パディング込みで幅を計算 */
+}
+
+.form-label {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  color: #FF6F91;
+  font-size: 16px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #FF6F91;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  transition: border-color 0.3s ease; /* フォーカス時のアニメーション */
+}
+
+.form-input:focus {
+  border-color: #FF85A1; /* フォーカス時に色を少し変える */
+  outline: none;
+}
+
+.password-hint {
+  color: #FFB6C1; /* 優しいピンクのヒントテキスト */
+}
+
+.submit-button {
+  background-color: #FF6F91;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  transition: background-color 0.3s ease; /* マウスオーバーでのエフェクト */
+}
+
+.submit-button:hover {
+  background-color: #FF85A1;
+}
+
+/* ログインリンクのスタイル */
+.devise-links a {
+  display: inline-block; /* ボタン風にするためにブロック表示 */
+  padding: 12px 24px; /* 内側の余白を広げる */
+  background-color: #f60cf2; /* ピンク色の背景 */
+  color: white; /* 白い文字 */
+  font-size: 18px; /* 文字サイズを大きく */
+  font-weight: bold; /* 太字にして強調 */
+  border-radius: 8px; /* 角を丸くして柔らかい印象に */
+  text-decoration: none; /* 下線を消す */
+  transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影をつけて立体感を追加 */
+}
+
+.devise-links a:hover {
+  background-color: #ee09b8; /* ホバー時に色を少し明るく */
+}
