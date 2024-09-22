@@ -15,8 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
-  socket: /tmp/mysql.sock
-
+  socket: /usr/local/var/mysql/mysql.sock
 development:
   <<: *default
   database: bagel_mallow_development
