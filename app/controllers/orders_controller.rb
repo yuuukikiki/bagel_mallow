@@ -39,16 +39,29 @@ class OrdersController < ApplicationController
     @total_amount = @cart_items.sum { |item| item.quantity * item.item.price } if @cart_items.present?
     @order.total_amount = @total_amount
 
-    if @order.address.present?
-      @order.address.user = current_user
-      @order.address.order = @order # Address と Order を関連付ける
-    end
+    @order.address.user = current_user if @order.address.present?
+    Rails.logger.debug "住所オブジェクト: #{@order.address}"
 
-    # addressの保存が行われているか確認
-    if @order.save
-      redirect_to complete_orders_path(@order), notice: '注文が完了しました'
-    else
-      Rails.logger.info @order.address.errors.full_messages # ここでエラーメッセージを確認
+    ActiveRecord::Base.transaction do
+      if @order.save
+        @cart_items.each do |cart_item|
+          @order.order_items.create!(
+            item_id: cart_item.item_id,
+            quantity: cart_item.quantity,
+            price: cart_item.item.price # 必要に応じて price カラムがある場合
+          )
+        end
+
+        # カートを空にする
+        @cart.cart_items.destroy_all
+
+        redirect_to complete_order_path(@order), notice: '注文が完了しました'
+      else
+        Rails.logger.info @order.address.errors.full_messages
+        render 'new', status: :unprocessable_entity
+      end
+    rescue StandardError => e
+      Rails.logger.error "注文処理中にエラーが発生しました: #{e.message}"
       render 'new', status: :unprocessable_entity
     end
   end

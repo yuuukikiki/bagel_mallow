@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  # ==============================
-  # ユーザー用ルーティング
-  # ==============================
-
   # ユーザー認証
   devise_for :users
 
@@ -27,34 +23,5 @@ Rails.application.routes.draw do
   # マイページ
   resource :profile, only: [:show] do
     get 'order_history', on: :collection
-  end
-
-  # ==============================
-  # 管理者用ルーティング
-  # ==============================
-
-  # 管理者認証
-  devise_for :admins, controllers: {
-    sessions: 'admin/sessions'
-  }
-
-  namespace :admin do
-    # 管理者ダッシュボード
-    root to: 'dashboard#index'
-
-    # 商品管理
-    resources :items
-
-    # 注文管理
-    resources :orders
-
-    # お問い合わせ管理
-    resources :contacts
-
-    # ユーザー管理（必要な場合）
-    resources :users
-
-    # サイト設定管理
-    resource :settings, only: [:edit, :update]
   end
 end
