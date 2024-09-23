@@ -1,116 +1,102 @@
+# アプリケーション名
+bagel_mallow
+
+# アプリケーション概要
+ベーグルのネット販売のアプリです。
+
+# 利用方法
+
+1 トップページのヘッダーにある「新規登録」ボタンをクリックし、ユーザー登録を行う
+
+2 メニューページで商品を選び、追加する
 
 
-## users テーブル
+3 カートアイコンの中身を確認し、数量や商品を確認する。
 
-| Column                | Type   | Options      |
-| --------------------- | ------ | ------------ |
-| name                  | string | null: false  |
-| phone_number          | string | null: false  |
-| email                 | string | unique: true, null: false|
+4 注文ページで送付先の住所とカード情報を入力する
 
-### Association
-
-- has_many :addresses
-- has_many :orders
-- has_one :cart
+5 注文完了ページでログアウトする
 
 
-## addresses テーブル
+## 機能一覧
 
-| Column        | Type       | Options     |
-| ------------- | ---------- | ----------- |
-| postal_code   | string     | null: false |
-| city          | string     | null: false |
-| street        | string     | null: false |
-| building_name | string     | null: true  |
-| phone_number  | string     | null: false |
-| user          | references | null: false, foreign_key: true|
-| prefecture_id | integer    | null: false |
-
-### Association
-
-- belongs_to :user
-- has_many :orders
-- belongs_to_active_hash :prefecture
+| 機能                         | ログインユーザー | 非ログインユーザー |
+|------------------------------|------------------|--------------------|
+| 新規登録                 | ❌              | ○                  |
+| メニュー閲覧                   | ○                | ○                  |
+| 商品注文                    | ○                | ❌               |
 
 
+## アプリケーションを作成した背景
+友人がベーグル屋さんをオープンするにあたり、ホームページ作成をお願いされました。
+ネット販売を主流にしたいとのことで、注文〜決済機能の実装までを必須機能として取り入れました。
+ユーザーが使いやすいように、シンプルで分かりやすい、直感的な操作ができるようなアプリを提供したいと考えました。
 
-## items テーブル
+## 実装予定の機能
+・シナリオテストを用意する
+  (決済においてどのようなフローが起こりうるか(成功、失敗、離脱、途中で接続が切断されるetc))
 
-| Column           | Type       | Options     |
-| -----------------| ---------- | ----------- |
-| name             | string     | null: false |
-| description      | text       | null: false |
-| price            | integer    | null: false |
-| image_url        | string     | null: false |
+・実機でテストを行う
+  (複数ブラウザ，スマホなどを利用して、繰り返しテストを行う)
 
-### Association
+## 開発環境
+### 言語・フレームワーク
 
-- has_many :order_items
-- has_many :cart_items
+Ruby 3.2.0
 
+Ruby on Rails7.0.8.4
 
-## orders テーブル
+### デプロイ環境
 
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| user             | references | null: false, foreign_key: true  |
-| total_amount     | integer    | null: false                     |
-| status           | string     | null: false                     |
-| shipping_address | references | null: false, foreign_key: true  |
+AWS
 
-### Association
+SequelAce:データベース管理
 
-- belongs_to :user
-- belongs_to :address
-- has_many :order_items
+### フロントエンド
+HTML
 
+CSS
 
-## order_items テーブル
+JavaScript
 
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| order            | references | null: false, foreign_key: true  |
-| item             | references | null: false, foreign_key: true  |
-| quantity         | integer    | null: false                     |
-| price            | integer    | null: false                     |
+Google Fonts/Zen Maru Gothic
 
-### Association
-
-- belongs_to :order
-- belongs_to :item
+### 使用エディタ
+VS Code
 
 
-## carts テーブル
+## ローカルでの動作方法
+以下のコマンドを順に実行してください。
 
-| Column      | Type       | Options                         |
-| ----------- | ---------- | --------------------------------|
-| user        | references | null: false, foreign_key: true   |
+```bash
 
-### Association
+ # リポジトリをクローン
+% git clone https://github.com/yuuukikiki/bagel_mallow.git
 
-- belongs_to :user
-- has_many :cart_items, dependent: :destroy
+ # プロジェクトディレクトリに移動
+% cd bagel_mallow
+
+ # 必要なGemをインストール
+% bundle install
+
+ # データベースを作成・マイグレーション
+% rails db:create
+% rails db:migrate
+% rails db:seed
+
+ # JavaScriptパッケージをインストール
+% yarn install
+
+ # ローカルサーバーを起動
+% rails server
+
+```
 
 
-## cart_items テーブル
+## 工夫した点
+工夫した点として、ユーザーの使いやすさを重視し、必要最低限の機能に絞って実装しました。
+不要なリンクや機能を排除し、シンプルで直感的に操作できるデザインを追求しました。
+ページ数や遷移のステップも最小限に抑え、効率的に利用できるよう工夫しています。
 
-| Column      | Type       | Options                         |
-| ----------- | ---------- | --------------------------------|
-| cart        | references | null: false, foreign_key: true  |
-| item        | references | null: false, foreign_key: true  |
-| quantity    | integer    | null: false                     |
-
-### Association
-
-- belongs_to :cart
-- belongs_to :item
-
-
-## contacts テーブル
-
-| Column      | Type       | Options                         |
-| ----------- | ---------- | --------------------------------|
-| name        | string     | null: false                     |
-| email       | string     | null: false                     |
-| message     | text       | null: false                     |
+知り合いに実際に利用してもらって、
+ユーザーの意見を聞きながら改善を行っています。
