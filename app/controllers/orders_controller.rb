@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @cart = current_user.cart
+    @cart = current_user || Cart.new
     @cart_items = @cart.cart_items.includes(:item) if @cart
     @items = Item.all
   end
