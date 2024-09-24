@@ -8,6 +8,8 @@ bagel_mallow
 
 1 トップページのヘッダーにある「新規登録」ボタンをクリックし、ユーザー登録を行う
 
+[![Image from Gyazo](https://i.gyazo.com/d8b8b1e405c405472177b8a0296d6076.gif)](https://gyazo.com/d8b8b1e405c405472177b8a0296d6076)
+
 2 メニューページで商品を選び、追加する
 
 
