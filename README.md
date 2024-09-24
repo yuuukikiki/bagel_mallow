@@ -12,13 +12,19 @@ bagel_mallow
 
 2 メニューページで商品を選び、追加する
 
+[![Image from Gyazo](https://i.gyazo.com/4bec8c922afa33b4a7c3036b8c0e85ab.gif)](https://gyazo.com/4bec8c922afa33b4a7c3036b8c0e85ab)
 
 3 カートアイコンの中身を確認し、数量や商品を確認する。
 
+[![Image from Gyazo](https://i.gyazo.com/487d371963e672863c6687a489c1e2f5.gif)](https://gyazo.com/487d371963e672863c6687a489c1e2f5)
+
 4 注文ページで送付先の住所とカード情報を入力する
+
+[![Image from Gyazo](https://i.gyazo.com/63e9bb45e3e65ee7269e2397aa68948a.gif)](https://gyazo.com/63e9bb45e3e65ee7269e2397aa68948a)
 
 5 注文完了ページでログアウトする
 
+[![Image from Gyazo](https://i.gyazo.com/59d1a4cf4bb4665ad6648fcece23d872.gif)](https://gyazo.com/59d1a4cf4bb4665ad6648fcece23d872)
 
 ## 機能一覧
 
@@ -27,7 +33,7 @@ bagel_mallow
 | 新規登録                 | ❌              | ○                  |
 | メニュー閲覧                   | ○                | ○                  |
 | 商品注文                    | ○                | ❌               |
-
+| カート閲覧                 | ⭕️              | ❌                  |
 
 ## アプリケーションを作成した背景
 友人がベーグル屋さんをオープンするにあたり、ホームページ作成をお願いされました。
@@ -46,7 +52,7 @@ bagel_mallow
 
 Ruby 3.2.0
 
-Ruby on Rails7.0.8.4
+Ruby on Rails 7.0.8.4
 
 ### デプロイ環境
 
@@ -99,6 +105,4 @@ VS Code
 工夫した点として、ユーザーの使いやすさを重視し、必要最低限の機能に絞って実装しました。
 不要なリンクや機能を排除し、シンプルで直感的に操作できるデザインを追求しました。
 ページ数や遷移のステップも最小限に抑え、効率的に利用できるよう工夫しています。
-
-知り合いに実際に利用してもらって、
-ユーザーの意見を聞きながら改善を行っています。
+友人に実際に利用してもらって、意見を聞きながら改善を行っています。
