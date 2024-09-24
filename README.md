@@ -24,7 +24,7 @@ bagel_mallow
 
 5 注文完了ページでログアウトする
 
-[![Image from Gyazo](https://i.gyazo.com/59d1a4cf4bb4665ad6648fcece23d872.gif)](https://gyazo.com/59d1a4cf4bb4665ad6648fcece23d872)
+[![Image from Gyazo](https://i.gyazo.com/71a7c1479fd2ce1c58a63ea9a12c803f.gif)](https://gyazo.com/71a7c1479fd2ce1c58a63ea9a12c803f)
 
 ## 機能一覧
 
@@ -34,6 +34,11 @@ bagel_mallow
 | メニュー閲覧                   | ○                | ○                  |
 | 商品注文                    | ○                | ❌               |
 | カート閲覧                 | ⭕️              | ❌                  |
+
+## データベース設計
+
+
+
 
 ## アプリケーションを作成した背景
 友人がベーグル屋さんをオープンするにあたり、ホームページ作成をお願いされました。
