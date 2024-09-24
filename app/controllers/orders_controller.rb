@@ -2,9 +2,14 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @cart = current_user || Cart.new
-    @cart_items = @cart.cart_items.includes(:item) if @cart
-    @items = Item.all
+    @cart = current_user&.cart
+    if @cart.nil? || @cart.cart_items.empty?
+      flash[:notice] = "カートは空です"
+      @cart_items = [] # カートが空の場合は空の配列をセット
+    else
+      @cart_items = @cart.cart_items.includes(:item)
+    end
+      @items = Item.all
   end
 
   def new
