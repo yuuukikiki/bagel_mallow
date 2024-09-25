@@ -37,7 +37,9 @@ bagel_mallow
 
 ## データベース設計
 
+### ER図
 
+[![Image from Gyazo](https://i.gyazo.com/3f5c4435f84138cb1d83c16f35a5572a.png)](https://gyazo.com/3f5c4435f84138cb1d83c16f35a5572a)
 
 
 ## アプリケーションを作成した背景
