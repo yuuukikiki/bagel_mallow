@@ -22,11 +22,6 @@ bagel_mallow
 
 [![Image from Gyazo](https://i.gyazo.com/63e9bb45e3e65ee7269e2397aa68948a.gif)](https://gyazo.com/63e9bb45e3e65ee7269e2397aa68948a)
 
-5 注文完了ページでログアウトする
-
-[![Image from Gyazo](https://i.gyazo.com/59d1a4cf4bb4665ad6648fcece23d872.gif)](https://gyazo.com/59d1a4cf4bb4665ad6648fcece23d872)
-
-[![Image from Gyazo](https://i.gyazo.com/71a7c1479fd2ce1c58a63ea9a12c803f.gif)](https://gyazo.com/71a7c1479fd2ce1c58a63ea9a12c803f)
 
 ## 機能一覧
 
