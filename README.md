@@ -18,11 +18,13 @@ bagel_mallow
 
 [![Image from Gyazo](https://i.gyazo.com/487d371963e672863c6687a489c1e2f5.gif)](https://gyazo.com/487d371963e672863c6687a489c1e2f5)
 
-4 注文ページで送付先の住所とカード情報を入力する
+4 注文ページで送付先の住所とカード情報を入力し、注文確定ボタンを押す
 
 [![Image from Gyazo](https://i.gyazo.com/63e9bb45e3e65ee7269e2397aa68948a.gif)](https://gyazo.com/63e9bb45e3e65ee7269e2397aa68948a)
 
 5 注文完了ページでログアウトする
+
+[![Image from Gyazo](https://i.gyazo.com/59d1a4cf4bb4665ad6648fcece23d872.gif)](https://gyazo.com/59d1a4cf4bb4665ad6648fcece23d872)
 
 [![Image from Gyazo](https://i.gyazo.com/71a7c1479fd2ce1c58a63ea9a12c803f.gif)](https://gyazo.com/71a7c1479fd2ce1c58a63ea9a12c803f)
 
