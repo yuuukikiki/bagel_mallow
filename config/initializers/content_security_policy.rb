@@ -10,7 +10,6 @@ Rails.application.configure do
     policy.style_src   :self, :https, 'https://fonts.googleapis.com', "'unsafe-inline'"
     policy.style_src_elem :self, :https, 'https://fonts.googleapis.com'
     # policy.report_uri "/csp-violation-report-endpoint"
-    policy.script_src :self, :https, 'https://js.pay.jp', "'unsafe-inline'"
   end
 
   config.content_security_policy_nonce_generator = ->(request) { SecureRandom.base64(16) }

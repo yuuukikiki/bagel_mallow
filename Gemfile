@@ -84,6 +84,7 @@ gem 'rails-i18n'
 gem 'pry-rails'
 gem "rails-ujs"
 gem 'payjp'
+gem 'gon'
 
 group :production do
   gem 'unicorn', '6.1.0'

@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-   // PAY.JPが初期化されていない場合のみ初期化
-   if (typeof Payjp === 'undefined') {
-  const payjp = Payjp(''); // 公開可能キーを設定
+   if (!window.payjpInstance) {
+    const publicKey = gon.public_key
+    const payjp = Payjp(publicKey)
+    window.payjpInstance = payjp; // PAY.JPのインスタンスを保存して再利用
+
   const elements = payjp.elements();
   const card = elements.create('card'); // カード情報入力欄を作成
   card.mount('#card-element'); // カード情報入力欄をマウント

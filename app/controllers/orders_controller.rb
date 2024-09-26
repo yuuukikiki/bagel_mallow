@@ -2,14 +2,15 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @cart = current_user&.cart
     if @cart.nil? || @cart.cart_items.empty?
-      flash[:notice] = "カートは空です"
+      flash[:notice] = 'カートは空です'
       @cart_items = [] # カートが空の場合は空の配列をセット
     else
       @cart_items = @cart.cart_items.includes(:item)
     end
-      @items = Item.all
+    @items = Item.all
   end
 
   def new
@@ -77,6 +78,6 @@ class OrdersController < ApplicationController
     params.require(:order).permit(
       address_attributes: %i[user_id postal_code prefecture_id city street building_name phone_number],
       order_items_attributes: %i[item_id quantity]
-    )
+    ).merge(token: params[:payjp_token])
   end
 end
