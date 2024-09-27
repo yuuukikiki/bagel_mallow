@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
-    <%= include_gon %>
+    <%= include_gon nonce: content_security_policy_nonce %>
     <script type="text/javascript" src="https://js.pay.jp/v2/pay.js" nonce="<%= content_security_policy_nonce %>">></script>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>

@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @cart = current_user&.cart
     if @cart.nil? || @cart.cart_items.empty?
       flash[:notice] = 'カートは空です'
@@ -14,6 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def new
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @order = Order.new
     @order.build_address
 

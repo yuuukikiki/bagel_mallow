@@ -65,6 +65,8 @@
   <% end %>
   </main>
 
-  <!-- StimulusコントローラでJavaScript制御 -->
+  <script nonce="<%= content_security_policy_nonce %>">
+    const publicKey = gon.public_key;
+  </script>
 </body>
 </html>

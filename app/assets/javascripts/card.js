@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-   if (!window.payjpInstance) {
-    const publicKey = gon.public_key
+   if (!window.payjpInstance && typeof publicKey !== "undefined") {
     const payjp = Payjp(publicKey)
     window.payjpInstance = payjp; // PAY.JPのインスタンスを保存して再利用
 

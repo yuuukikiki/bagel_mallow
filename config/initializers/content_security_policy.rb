@@ -6,7 +6,7 @@ Rails.application.configure do
     policy.font_src    :self, :https, 'https://fonts.googleapis.com', 'https://fonts.gstatic.com'
     policy.img_src     :self, :https, :data
     policy.object_src  :none
-    policy.script_src  :self, :https, 'https://js.pay.jp'
+    policy.script_src  :self, :https, 'https://js.pay.jp', -> { "'nonce-#{SecureRandom.base64(16)}'" }
     policy.style_src   :self, :https, 'https://fonts.googleapis.com', "'unsafe-inline'"
     policy.style_src_elem :self, :https, 'https://fonts.googleapis.com'
     # policy.report_uri "/csp-violation-report-endpoint"
